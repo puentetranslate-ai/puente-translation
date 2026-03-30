@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Puente Translations — Spanish ↔ English Translation in Tampa Bay</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal-deep: #1a3a4a;
+    --teal-mid: #1e4d5e;
+    --gold: #d4a853;
+    --gold-light: #f0d48a;
+    --gold-dark: #b8882e;
+    --cream: #faf6f0;
+    --text-dark: #2c2c2c;
+    --text-muted: #6b6b6b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Lora', Georgia, serif;
+    color: var(--text-dark);
+    background: var(--cream);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 0.8rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(26, 58, 74, 0.97);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(212, 168, 83, 0.12);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    text-decoration: none;
+  }
+
+  .nav-logo-img { width: 38px; height: 38px; border-radius: 50%; }
+
+  .nav-logo-text {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    line-height: 1.1;
+  }
+
+  .nav-logo-text span {
+    font-weight: 400;
+    color: var(--gold-light);
+    opacity: 0.6;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    display: block;
+  }
+
+  .nav-contact {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    color: rgba(240, 212, 138, 0.6);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .nav-contact:hover { color: var(--gold-light); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(165deg, var(--teal-deep) 0%, var(--teal-mid) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 6rem 1.5rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(45deg, transparent, transparent 45px, rgba(212,168,83,0.025) 45px, rgba(212,168,83,0.025) 46px),
+      repeating-linear-gradient(-45deg, transparent, transparent 45px, rgba(212,168,83,0.025) 45px, rgba(212,168,83,0.025) 46px);
+    pointer-events: none;
+  }
+
+  .hero-logo {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(2.2rem, 5.5vw, 3.5rem);
+    font-weight: 500;
+    color: var(--cream);
+    line-height: 1.15;
+    max-width: 550px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.4s forwards;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: rgba(240, 212, 138, 0.55);
+    max-width: 440px;
+    line-height: 1.7;
+    margin-top: 1.2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.6s forwards;
+  }
+
+  .hero-divider {
+    width: 50px;
+    height: 1px;
+    background: var(--gold);
+    margin: 1.8rem auto;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.8s forwards;
+  }
+
+  .hero-cta-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 1s forwards;
+  }
+
+  .hero-cta {
+    padding: 0.9rem 2rem;
+    font-family: 'Lora', serif;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .hero-cta-primary {
+    color: var(--teal-deep);
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border: none;
+  }
+
+  .hero-cta-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(212, 168, 83, 0.3);
+  }
+
+  .hero-cta-secondary {
+    color: var(--gold);
+    background: transparent;
+    border: 1px solid rgba(212, 168, 83, 0.4);
+  }
+
+  .hero-cta-secondary:hover {
+    border-color: var(--gold);
+    background: rgba(212, 168, 83, 0.08);
+  }
+
+  /* ── WHAT I HELP WITH ── */
+  .services {
+    padding: 5rem 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    text-align: center;
+    margin-bottom: 0.8rem;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-weight: 500;
+    text-align: center;
+    color: var(--teal-deep);
+    margin-bottom: 1rem;
+  }
+
+  .section-intro {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    max-width: 550px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .help-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .help-item {
+    background: white;
+    border: 1px solid rgba(212, 168, 83, 0.1);
+    border-radius: 3px;
+    padding: 1.5rem;
+    transition: all 0.3s;
+  }
+
+  .help-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(26, 58, 74, 0.06);
+    border-color: rgba(212, 168, 83, 0.25);
+  }
+
+  .help-item-icon { font-size: 1.5rem; margin-bottom: 0.6rem; }
+
+  .help-item h3 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--teal-deep);
+    margin-bottom: 0.4rem;
+  }
+
+  .help-item p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* ── PRICING ── */
+  .pricing {
+    background: var(--teal-deep);
+    padding: 5rem 1.5rem;
+    position: relative;
+  }
+
+  .pricing::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 50px, rgba(212,168,83,0.015) 50px, rgba(212,168,83,0.015) 51px);
+    pointer-events: none;
+  }
+
+  .pricing-inner {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+  }
+
+  .pricing .section-label { color: var(--gold); }
+  .pricing .section-title { color: var(--cream); margin-bottom: 0.8rem; }
+
+  .pricing-intro {
+    color: rgba(250, 246, 240, 0.5);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+
+  .price-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .price-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(212, 168, 83, 0.15);
+    border-radius: 3px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: border-color 0.3s;
+  }
+
+  .price-card:hover { border-color: rgba(212, 168, 83, 0.35); }
+
+  .price-card h3 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--gold-light);
+    margin-bottom: 0.3rem;
+  }
+
+  .price-amount {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--cream);
+    margin: 0.5rem 0;
+  }
+
+  .price-amount span {
+    font-size: 1rem;
+    font-weight: 400;
+    color: rgba(250, 246, 240, 0.4);
+  }
+
+  .price-desc {
+    font-size: 0.85rem;
+    color: rgba(250, 246, 240, 0.4);
+    line-height: 1.6;
+  }
+
+  .pricing-note {
+    font-size: 0.85rem;
+    color: rgba(212, 168, 83, 0.45);
+    font-style: italic;
+    margin-top: 2rem;
+  }
+
+  /* ── ABOUT ── */
+  .about {
+    padding: 5rem 1.5rem;
+    max-width: 650px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .about .section-title { margin-bottom: 1.5rem; }
+
+  .about-text {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .about-text em {
+    color: var(--teal-deep);
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  /* ── CONTACT ── */
+  .contact {
+    background: linear-gradient(165deg, var(--teal-deep), var(--teal-mid));
+    padding: 5rem 1.5rem;
+    text-align: center;
+  }
+
+  .contact .section-label { color: var(--gold); }
+  .contact .section-title { color: var(--cream); margin-bottom: 1rem; }
+
+  .contact-text {
+    color: rgba(250, 246, 240, 0.5);
+    font-size: 0.95rem;
+    max-width: 420px;
+    margin: 0 auto 2rem;
+    line-height: 1.7;
+  }
+
+  .contact-methods {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .contact-method {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .contact-method-icon {
+    font-size: 1.3rem;
+  }
+
+  .contact-method-info {
+    text-align: left;
+  }
+
+  .contact-method-label {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .contact-method-value {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.15rem;
+    color: var(--cream);
+  }
+
+  .contact-method-value a {
+    color: var(--cream);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(250, 246, 240, 0.15);
+    transition: border-color 0.3s;
+  }
+
+  .contact-method-value a:hover { border-color: var(--gold); }
+
+  .contact-cta {
+    display: inline-block;
+    padding: 0.9rem 2rem;
+    font-family: 'Lora', serif;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--teal-deep);
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .contact-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(212, 168, 83, 0.3);
+  }
+
+  .bilingual-note {
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    color: rgba(212, 168, 83, 0.4);
+    font-style: italic;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #142e3a;
+    padding: 1.5rem;
+    text-align: center;
+    border-top: 1px solid rgba(212, 168, 83, 0.08);
+  }
+
+  .footer-text {
+    font-size: 0.75rem;
+    color: rgba(250, 246, 240, 0.25);
+    letter-spacing: 1px;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 600px) {
+    nav { padding: 0.7rem 1.2rem; }
+    .hero { padding: 6rem 1.2rem 3.5rem; }
+    .services, .about { padding: 3.5rem 1.2rem; }
+    .pricing, .contact { padding: 3.5rem 1.2rem; }
+    .hero-cta-group { flex-direction: column; align-items: center; }
+    .hero-cta { width: 100%; max-width: 280px; text-align: center; }
+    .contact-method { flex-direction: column; text-align: center; }
+    .contact-method-info { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <svg class="nav-logo-img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <defs>
+        <linearGradient id="nBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#1a3a4a"/><stop offset="50%" style="stop-color:#1e4d5e"/><stop offset="100%" style="stop-color:#1a3a4a"/></linearGradient>
+        <linearGradient id="nG" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#c9953a"/><stop offset="50%" style="stop-color:#f0d48a"/><stop offset="100%" style="stop-color:#c9953a"/></linearGradient>
+        <linearGradient id="nTG" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#f0d48a"/><stop offset="100%" style="stop-color:#d4a853"/></linearGradient>
+      </defs>
+      <circle cx="256" cy="256" r="256" fill="url(#nBg)"/>
+      <circle cx="256" cy="256" r="240" fill="none" stroke="url(#nG)" stroke-width="1.5" opacity="0.4"/>
+      <g transform="translate(256, 235)">
+        <path d="M-120,30 Q-120,-50 0,-55 Q120,-50 120,30" fill="none" stroke="url(#nG)" stroke-width="4" stroke-linecap="round"/>
+        <line x1="-140" y1="30" x2="140" y2="30" stroke="url(#nG)" stroke-width="4" stroke-linecap="round"/>
+        <line x1="-120" y1="30" x2="-120" y2="55" stroke="url(#nG)" stroke-width="3.5" stroke-linecap="round"/>
+        <line x1="120" y1="30" x2="120" y2="55" stroke="url(#nG)" stroke-width="3.5" stroke-linecap="round"/>
+        <line x1="-90" y1="30" x2="-90" y2="-18" stroke="url(#nG)" stroke-width="1.5" opacity="0.6"/>
+        <line x1="-60" y1="30" x2="-60" y2="-38" stroke="url(#nG)" stroke-width="1.5" opacity="0.6"/>
+        <line x1="-30" y1="30" x2="-30" y2="-48" stroke="url(#nG)" stroke-width="1.5" opacity="0.6"/>
+        <line x1="0" y1="30" x2="0" y2="-55" stroke="url(#nG)" stroke-width="1.5" opacity="0.6"/>
+        <line x1="30" y1="30" x2="30" y2="-48" stroke="url(#nG)" stroke-width="1.5" opacity="0.6"/>
+        <line x1="60" y1="30" x2="60" y2="-38" stroke="url(#nG)" stroke-width="1.5" opacity="0.6"/>
+        <line x1="90" y1="30" x2="90" y2="-18" stroke="url(#nG)" stroke-width="1.5" opacity="0.6"/>
+        <circle cx="0" cy="-60" r="4" fill="url(#nG)" opacity="0.7"/>
+      </g>
+      <text x="256" y="355" text-anchor="middle" font-family="'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif" font-size="58" font-weight="700" letter-spacing="14" fill="url(#nTG)">PUENTE</text>
+      <g transform="translate(256, 372)"><line x1="-70" y1="0" x2="-12" y2="0" stroke="url(#nG)" stroke-width="1" opacity="0.5"/><circle cx="0" cy="0" r="2.5" fill="url(#nG)" opacity="0.6"/><line x1="12" y1="0" x2="70" y2="0" stroke="url(#nG)" stroke-width="1" opacity="0.5"/></g>
+      <text x="256" y="400" text-anchor="middle" font-family="'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif" font-size="20" letter-spacing="8" fill="url(#nTG)" opacity="0.85">TRANSLATIONS</text>
+    </svg>
+    <div class="nav-logo-text">
+      Puente
+      <span>Translations</span>
+    </div>
+  </a>
+  <a href="mailto:puente.translate@gmail.com" class="nav-contact">puente.translate@gmail.com</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <svg class="hero-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <defs>
+      <linearGradient id="hBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#1a3a4a"/><stop offset="50%" style="stop-color:#1e4d5e"/><stop offset="100%" style="stop-color:#1a3a4a"/></linearGradient>
+      <linearGradient id="hG" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#c9953a"/><stop offset="50%" style="stop-color:#f0d48a"/><stop offset="100%" style="stop-color:#c9953a"/></linearGradient>
+      <linearGradient id="hGF" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#d4a853"/><stop offset="50%" style="stop-color:#f0d48a"/><stop offset="100%" style="stop-color:#c9953a"/></linearGradient>
+      <linearGradient id="hTG" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#f0d48a"/><stop offset="100%" style="stop-color:#d4a853"/></linearGradient>
+      <pattern id="hT" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse"><rect width="40" height="40" fill="none"/><path d="M20 0 L40 20 L20 40 L0 20 Z" fill="none" stroke="rgba(212,168,83,0.06)" stroke-width="0.5"/></pattern>
+    </defs>
+    <circle cx="256" cy="256" r="256" fill="url(#hBg)"/>
+    <circle cx="256" cy="256" r="256" fill="url(#hT)"/>
+    <circle cx="256" cy="256" r="240" fill="none" stroke="url(#hGF)" stroke-width="1.5" opacity="0.4"/>
+    <circle cx="256" cy="256" r="234" fill="none" stroke="url(#hGF)" stroke-width="0.5" opacity="0.25"/>
+    <circle cx="256" cy="16" r="3" fill="url(#hGF)" opacity="0.5"/>
+    <circle cx="256" cy="496" r="3" fill="url(#hGF)" opacity="0.5"/>
+    <circle cx="16" cy="256" r="3" fill="url(#hGF)" opacity="0.5"/>
+    <circle cx="496" cy="256" r="3" fill="url(#hGF)" opacity="0.5"/>
+    <g transform="translate(256, 235)">
+      <path d="M-120,30 Q-120,-50 0,-55 Q120,-50 120,30" fill="none" stroke="url(#hG)" stroke-width="4" stroke-linecap="round"/>
+      <path d="M-110,30 Q-110,-40 0,-45 Q110,-40 110,30" fill="none" stroke="url(#hG)" stroke-width="1.5" opacity="0.4"/>
+      <line x1="-140" y1="30" x2="140" y2="30" stroke="url(#hG)" stroke-width="4" stroke-linecap="round"/>
+      <line x1="-120" y1="30" x2="-120" y2="55" stroke="url(#hG)" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="120" y1="30" x2="120" y2="55" stroke="url(#hG)" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="-90" y1="30" x2="-90" y2="-18" stroke="url(#hG)" stroke-width="1.5" opacity="0.6"/>
+      <line x1="-60" y1="30" x2="-60" y2="-38" stroke="url(#hG)" stroke-width="1.5" opacity="0.6"/>
+      <line x1="-30" y1="30" x2="-30" y2="-48" stroke="url(#hG)" stroke-width="1.5" opacity="0.6"/>
+      <line x1="0" y1="30" x2="0" y2="-55" stroke="url(#hG)" stroke-width="1.5" opacity="0.6"/>
+      <line x1="30" y1="30" x2="30" y2="-48" stroke="url(#hG)" stroke-width="1.5" opacity="0.6"/>
+      <line x1="60" y1="30" x2="60" y2="-38" stroke="url(#hG)" stroke-width="1.5" opacity="0.6"/>
+      <line x1="90" y1="30" x2="90" y2="-18" stroke="url(#hG)" stroke-width="1.5" opacity="0.6"/>
+      <circle cx="0" cy="-60" r="4" fill="url(#hGF)" opacity="0.7"/>
+    </g>
+    <g opacity="0.2">
+      <line x1="156" y1="295" x2="200" y2="295" stroke="url(#hGF)" stroke-width="1" stroke-linecap="round"/>
+      <line x1="220" y1="300" x2="290" y2="300" stroke="url(#hGF)" stroke-width="1" stroke-linecap="round"/>
+      <line x1="310" y1="295" x2="356" y2="295" stroke="url(#hGF)" stroke-width="1" stroke-linecap="round"/>
+    </g>
+    <text x="256" y="355" text-anchor="middle" font-family="'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif" font-size="58" font-weight="700" letter-spacing="14" fill="url(#hTG)">PUENTE</text>
+    <g transform="translate(256, 372)"><line x1="-70" y1="0" x2="-12" y2="0" stroke="url(#hGF)" stroke-width="1" opacity="0.5"/><circle cx="0" cy="0" r="2.5" fill="url(#hGF)" opacity="0.6"/><line x1="12" y1="0" x2="70" y2="0" stroke="url(#hGF)" stroke-width="1" opacity="0.5"/></g>
+    <text x="256" y="400" text-anchor="middle" font-family="'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif" font-size="20" letter-spacing="8" fill="url(#hTG)" opacity="0.85">TRANSLATIONS</text>
+    <text x="256" y="435" text-anchor="middle" font-family="'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif" font-size="12" letter-spacing="3" fill="url(#hGF)" opacity="0.5" font-style="italic">BRIDGING LANGUAGES</text>
+  </svg>
+
+  <h1>Spanish ↔ English <em>Translation</em> for Your Everyday Needs</h1>
+  <p class="hero-sub">Helping Tampa Bay's immigrant community navigate life in English — documents, letters, forms, and more.</p>
+  <div class="hero-divider"></div>
+  <div class="hero-cta-group">
+    <a href="mailto:puente.translate@gmail.com" class="hero-cta hero-cta-primary">Email Me Your Document</a>
+    <a href="#pricing" class="hero-cta hero-cta-secondary">See Pricing</a>
+  </div>
+</section>
+
+<!-- WHAT I HELP WITH -->
+<section class="services" id="services">
+  <div class="section-label">What I Help With</div>
+  <h2 class="section-title">Everyday Translations</h2>
+  <p class="section-intro">Need something translated from Spanish to English or English to Spanish? I can help with things like:</p>
+
+  <div class="help-list">
+    <div class="help-item">
+      <div class="help-item-icon">📄</div>
+      <h3>Letters &amp; Documents</h3>
+      <p>Personal letters, school notes, medical summaries, lease agreements, and everyday paperwork.</p>
+    </div>
+    <div class="help-item">
+      <div class="help-item-icon">📋</div>
+      <h3>Forms &amp; Applications</h3>
+      <p>Help understanding and filling out forms — job applications, enrollment papers, insurance forms.</p>
+    </div>
+    <div class="help-item">
+      <div class="help-item-icon">📣</div>
+      <h3>Flyers &amp; Ads</h3>
+      <p>Translate your business flyer, social media post, or advertisement to reach more people.</p>
+    </div>
+    <div class="help-item">
+      <div class="help-item-icon">🌐</div>
+      <h3>Online Content</h3>
+      <p>Website text, online listings, emails, and social media posts in both languages.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="pricing-inner">
+    <div class="section-label">Affordable Rates</div>
+    <h2 class="section-title">Simple, Fair Pricing</h2>
+    <p class="pricing-intro">Quality translations shouldn't break the bank. I keep my prices low so everyone can get the help they need.</p>
+
+    <div class="price-cards">
+      <div class="price-card">
+        <h3>Per Page</h3>
+        <div class="price-amount">$20 <span>/ page</span></div>
+        <p class="price-desc">Standard documents, letters, and forms. Most single-page documents done same day.</p>
+      </div>
+      <div class="price-card">
+        <h3>Longer Projects</h3>
+        <div class="price-amount">$0.08 <span>/ word</span></div>
+        <p class="price-desc">Multi-page documents, marketing materials, or ongoing work. Volume discounts available.</p>
+      </div>
+    </div>
+
+    <p class="pricing-note">Not sure? Send me your document and I'll give you a free quote — no obligation.</p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-label">About Me</div>
+  <h2 class="section-title">Why Puente?</h2>
+  <p class="about-text">I'm a <em>native bilingual speaker</em> based right here in Tampa Bay. I started Puente Translations because I saw how many people in our community need help bridging the language gap — whether it's understanding a letter from their child's school, translating a work document, or getting a flyer into both languages.</p>
+  <p class="about-text">I'm not a big agency. I'm your neighbor. I keep things <em>simple, affordable, and personal</em>. You send me what you need, I translate it, and I get it back to you fast — usually within 24 hours.</p>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-label">Get in Touch</div>
+  <h2 class="section-title">Let's Get Started</h2>
+  <p class="contact-text">Send me a photo or scan of your document and I'll get back to you with a free quote — usually within a few hours.</p>
+
+  <div class="contact-methods">
+    <div class="contact-method">
+      <div class="contact-method-icon">📧</div>
+      <div class="contact-method-info">
+        <div class="contact-method-label">Email</div>
+        <div class="contact-method-value"><a href="mailto:puente.translate@gmail.com">puente.translate@gmail.com</a></div>
+      </div>
+    </div>
+    <div class="contact-method">
+      <div class="contact-method-icon">💬</div>
+      <div class="contact-method-info">
+        <div class="contact-method-label">WhatsApp</div>
+        <div class="contact-method-value"><a href="#">Coming soon</a></div>
+      </div>
+    </div>
+    <div class="contact-method">
+      <div class="contact-method-icon">📍</div>
+      <div class="contact-method-info">
+        <div class="contact-method-label">Serving</div>
+        <div class="contact-method-value">Tampa Bay, Florida</div>
+      </div>
+    </div>
+  </div>
+
+  <a href="mailto:puente.translate@gmail.com" class="contact-cta">Email Me Today</a>
+  <p class="bilingual-note">Se habla español — hablamos tu idioma</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-text">&copy; 2026 Puente Translations &middot; Tampa Bay, FL</p>
+</footer>
+
+</body>
+</html>
