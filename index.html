@@ -457,6 +457,145 @@
     font-style: italic;
   }
 
+  /* ── FORM ── */
+  .intake-form {
+    max-width: 520px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+
+  .form-group.full { grid-column: 1 / -1; }
+
+  .form-label {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+
+  .form-input,
+  .form-select,
+  .form-textarea {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 0.9rem;
+    padding: 0.7rem 0.9rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(212, 168, 83, 0.2);
+    border-radius: 2px;
+    color: var(--cream);
+    outline: none;
+    transition: border-color 0.3s;
+  }
+
+  .form-input::placeholder,
+  .form-textarea::placeholder {
+    color: rgba(250, 246, 240, 0.25);
+  }
+
+  .form-input:focus,
+  .form-select:focus,
+  .form-textarea:focus {
+    border-color: var(--gold);
+  }
+
+  .form-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23d4a853' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.9rem center;
+    padding-right: 2.5rem;
+    cursor: pointer;
+  }
+
+  .form-select option {
+    background: var(--teal-deep);
+    color: var(--cream);
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .form-checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-checkbox-row input[type="checkbox"] {
+    accent-color: var(--gold);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+
+  .form-checkbox-label {
+    font-size: 0.85rem;
+    color: rgba(250, 246, 240, 0.6);
+  }
+
+  .form-submit {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    font-family: 'Lora', serif;
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--teal-deep);
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 0.5rem;
+  }
+
+  .form-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(212, 168, 83, 0.3);
+  }
+
+  .form-note {
+    text-align: center;
+    font-size: 0.8rem;
+    color: rgba(250, 246, 240, 0.3);
+    margin-top: 1rem;
+    font-style: italic;
+  }
+
+  .form-or {
+    text-align: center;
+    color: rgba(250, 246, 240, 0.3);
+    font-size: 0.85rem;
+    margin: 1.5rem 0;
+  }
+
+  .form-email-alt {
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  @media (max-width: 600px) {
+    .form-row { grid-template-columns: 1fr; }
+  }
+
   /* ── FOOTER ── */
   footer {
     background: #142e3a;
@@ -675,30 +814,86 @@
   <p class="about-text">I'm not a big agency. I'm your neighbor. I keep things <em>simple, affordable, and personal</em>. You send me what you need, I translate it, and I get it back to you fast — usually within 24 hours.</p>
 </section>
 
-<!-- CONTACT -->
+<!-- CONTACT / INTAKE FORM -->
 <section class="contact" id="contact">
-  <div class="section-label">Get in Touch</div>
-  <h2 class="section-title">Let's Get Started</h2>
-  <p class="contact-text">Send me a photo or scan of your document and I'll get back to you with a free quote — usually within a few hours.</p>
+  <div class="section-label">Get a Free Quote</div>
+  <h2 class="section-title">Request a Translation</h2>
+  <p class="contact-text">Fill out the form below and I'll get back to you with a quote — usually within a few hours.</p>
 
-  <div class="contact-methods">
-    <div class="contact-method">
-      <div class="contact-method-icon">📧</div>
-      <div class="contact-method-info">
-        <div class="contact-method-label">Email</div>
-        <div class="contact-method-value" id="contact-email"></div>
+  <!-- FORMSPREE FORM — replace YOUR_FORM_ID with your actual Formspree form ID -->
+  <div class="intake-form">
+    <form action="https://formspree.io/f/mvzvryoo" method="POST">
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="name">Your Name</label>
+          <input class="form-input" type="text" id="name" name="name" placeholder="Juan Pérez" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="email">Your Email</label>
+          <input class="form-input" type="email" id="email" name="email" placeholder="you@email.com" required>
+        </div>
       </div>
-    </div>
-    <div class="contact-method">
-      <div class="contact-method-icon">📍</div>
-      <div class="contact-method-info">
-        <div class="contact-method-label">Serving</div>
-        <div class="contact-method-value">Tampa Bay, Florida</div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="direction">Language Direction</label>
+          <select class="form-select" id="direction" name="language_direction" required>
+            <option value="" disabled selected>Select...</option>
+            <option value="Spanish to English">Spanish → English</option>
+            <option value="English to Spanish">English → Spanish</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="pages">Approx. Page Count</label>
+          <select class="form-select" id="pages" name="page_count" required>
+            <option value="" disabled selected>Select...</option>
+            <option value="1">1 page</option>
+            <option value="2-3">2–3 pages</option>
+            <option value="4-10">4–10 pages</option>
+            <option value="10+">10+ pages</option>
+          </select>
+        </div>
       </div>
+
+      <div class="form-group">
+        <label class="form-label" for="doctype">Type of Document</label>
+        <select class="form-select" id="doctype" name="document_type">
+          <option value="" disabled selected>Select...</option>
+          <option value="Personal letter">Personal letter or correspondence</option>
+          <option value="School document">School note or enrollment form</option>
+          <option value="Medical document">Medical form or summary</option>
+          <option value="Government form">Government form or application</option>
+          <option value="Job application">Job application or resume</option>
+          <option value="Legal document">Legal or immigration document</option>
+          <option value="Business flyer/ad">Business flyer, ad, or marketing</option>
+          <option value="Website/online">Website or online content</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="text">Paste Your Text (or describe what you need)</label>
+        <textarea class="form-textarea" id="text" name="text_to_translate" rows="5" placeholder="Paste the text you need translated here, or describe the document and I'll follow up..."></textarea>
+      </div>
+
+      <div class="form-checkbox-row">
+        <input type="checkbox" id="selfcert" name="self_certification" value="Yes">
+        <label class="form-checkbox-label" for="selfcert">I need a self-certification statement with my translation</label>
+      </div>
+
+      <input type="hidden" name="_subject" value="New Translation Request — Puente Translations">
+
+      <button type="submit" class="form-submit">Send My Request</button>
+      <p class="form-note">I'll reply with a quote and turnaround time. No obligation.</p>
+    </form>
+
+    <div class="form-or">— or email me directly —</div>
+    <div class="form-email-alt">
+      <span class="contact-method-value" id="contact-email"></span>
     </div>
   </div>
 
-  <a href="#" id="contact-cta" class="contact-cta">Email Me Today</a>
   <p class="bilingual-note">Se habla español — hablamos tu idioma</p>
 </section>
 
@@ -713,16 +908,13 @@
     var u = 'puente.translate';
     var d = 'gmail.com';
     var full = u + '@' + d;
-    var link = '<a href="mai' + 'lto:' + full + '">' + full + '</a>';
+    var link = '<a href="mai' + 'lto:' + full + '" style="color: var(--gold-light, #f0d48a); text-decoration: none; border-bottom: 1px solid rgba(240,212,138,0.3);">' + full + '</a>';
 
     var navEl = document.getElementById('nav-email');
     if (navEl) { navEl.innerHTML = full; navEl.style.cursor = 'pointer'; navEl.onclick = function(){ window.location = 'mai' + 'lto:' + full; }; }
 
     var contactEl = document.getElementById('contact-email');
     if (contactEl) contactEl.innerHTML = link;
-
-    var ctaEl = document.getElementById('contact-cta');
-    if (ctaEl) ctaEl.href = 'mai' + 'lto:' + full;
   })();
 </script>
 

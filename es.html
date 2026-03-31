@@ -457,6 +457,28 @@
     font-style: italic;
   }
 
+  /* ── FORM ── */
+  .intake-form { max-width: 520px; margin: 0 auto; text-align: left; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .form-group { display: flex; flex-direction: column; margin-bottom: 1rem; }
+  .form-group.full { grid-column: 1 / -1; }
+  .form-label { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+  .form-input, .form-select, .form-textarea { font-family: 'Lora', Georgia, serif; font-size: 0.9rem; padding: 0.7rem 0.9rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(212,168,83,0.2); border-radius: 2px; color: var(--cream); outline: none; transition: border-color 0.3s; }
+  .form-input::placeholder, .form-textarea::placeholder { color: rgba(250,246,240,0.25); }
+  .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--gold); }
+  .form-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23d4a853' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.9rem center; padding-right: 2.5rem; cursor: pointer; }
+  .form-select option { background: var(--teal-deep); color: var(--cream); }
+  .form-textarea { resize: vertical; min-height: 100px; }
+  .form-checkbox-row { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; }
+  .form-checkbox-row input[type="checkbox"] { accent-color: var(--gold); width: 16px; height: 16px; cursor: pointer; }
+  .form-checkbox-label { font-size: 0.85rem; color: rgba(250,246,240,0.6); }
+  .form-submit { display: block; width: 100%; padding: 1rem; font-family: 'Lora', serif; font-size: 0.9rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--teal-deep); background: linear-gradient(135deg, var(--gold), var(--gold-light)); border: none; border-radius: 2px; cursor: pointer; transition: all 0.3s; margin-top: 0.5rem; }
+  .form-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(212,168,83,0.3); }
+  .form-note { text-align: center; font-size: 0.8rem; color: rgba(250,246,240,0.3); margin-top: 1rem; font-style: italic; }
+  .form-or { text-align: center; color: rgba(250,246,240,0.3); font-size: 0.85rem; margin: 1.5rem 0; }
+  .form-email-alt { text-align: center; margin-bottom: 0.5rem; }
+  @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+
   /* ── FOOTER ── */
   footer {
     background: #142e3a;
@@ -675,30 +697,86 @@
   <p class="about-text">No soy una agencia grande. Soy su vecino. Mantengo las cosas <em>sencillas, accesibles y personales</em>. Usted me envía lo que necesita, yo lo traduzco, y se lo devuelvo rápido — normalmente en menos de 24 horas.</p>
 </section>
 
-<!-- CONTACT -->
+<!-- FORMULARIO DE CONTACTO -->
 <section class="contact" id="contact">
-  <div class="section-label">Contácteme</div>
-  <h2 class="section-title">Empecemos</h2>
-  <p class="contact-text">Envíeme una foto o copia de su documento y le respondo con una cotización gratis — normalmente en pocas horas.</p>
+  <div class="section-label">Cotización Gratis</div>
+  <h2 class="section-title">Solicite una Traducción</h2>
+  <p class="contact-text">Llene el formulario y le respondo con una cotización — normalmente en pocas horas.</p>
 
-  <div class="contact-methods">
-    <div class="contact-method">
-      <div class="contact-method-icon">📧</div>
-      <div class="contact-method-info">
-        <div class="contact-method-label">Correo Electrónico</div>
-        <div class="contact-method-value" id="contact-email"></div>
+  <div class="intake-form">
+    <form action="https://formspree.io/f/mvzvryoo" method="POST">
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="name">Su Nombre</label>
+          <input class="form-input" type="text" id="name" name="name" placeholder="Juan Pérez" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="email">Su Correo Electrónico</label>
+          <input class="form-input" type="email" id="email" name="email" placeholder="usted@email.com" required>
+        </div>
       </div>
-    </div>
-    <div class="contact-method">
-      <div class="contact-method-icon">📍</div>
-      <div class="contact-method-info">
-        <div class="contact-method-label">Sirviendo a</div>
-        <div class="contact-method-value">Tampa Bay, Florida</div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="direction">Dirección del Idioma</label>
+          <select class="form-select" id="direction" name="language_direction" required>
+            <option value="" disabled selected>Seleccione...</option>
+            <option value="Spanish to English">Español → Inglés</option>
+            <option value="English to Spanish">Inglés → Español</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="pages">Número de Páginas (aprox.)</label>
+          <select class="form-select" id="pages" name="page_count" required>
+            <option value="" disabled selected>Seleccione...</option>
+            <option value="1">1 página</option>
+            <option value="2-3">2–3 páginas</option>
+            <option value="4-10">4–10 páginas</option>
+            <option value="10+">10+ páginas</option>
+          </select>
+        </div>
       </div>
+
+      <div class="form-group">
+        <label class="form-label" for="doctype">Tipo de Documento</label>
+        <select class="form-select" id="doctype" name="document_type">
+          <option value="" disabled selected>Seleccione...</option>
+          <option value="Personal letter">Carta personal o correspondencia</option>
+          <option value="School document">Nota de escuela o formulario de inscripción</option>
+          <option value="Medical document">Formulario o resumen médico</option>
+          <option value="Government form">Formulario o trámite del gobierno</option>
+          <option value="Job application">Solicitud de empleo o currículum</option>
+          <option value="Legal document">Documento legal o de inmigración</option>
+          <option value="Business flyer/ad">Volante, anuncio o marketing</option>
+          <option value="Website/online">Página web o contenido en línea</option>
+          <option value="Other">Otro</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="text">Pegue Su Texto (o describa lo que necesita)</label>
+        <textarea class="form-textarea" id="text" name="text_to_translate" rows="5" placeholder="Pegue aquí el texto que necesita traducir, o describa el documento y yo le doy seguimiento..."></textarea>
+      </div>
+
+      <div class="form-checkbox-row">
+        <input type="checkbox" id="selfcert" name="self_certification" value="Yes">
+        <label class="form-checkbox-label" for="selfcert">Necesito una declaración de auto-certificación con mi traducción</label>
+      </div>
+
+      <input type="hidden" name="_subject" value="Nueva Solicitud de Traducción — Puente Translations">
+      <input type="hidden" name="_language" value="es">
+
+      <button type="submit" class="form-submit">Enviar Mi Solicitud</button>
+      <p class="form-note">Le respondo con una cotización y tiempo de entrega. Sin compromiso.</p>
+    </form>
+
+    <div class="form-or">— o escríbame directamente —</div>
+    <div class="form-email-alt">
+      <span class="contact-method-value" id="contact-email"></span>
     </div>
   </div>
 
-  <a href="#" id="contact-cta" class="contact-cta">Escríbame Hoy</a>
   <p class="bilingual-note">Hablamos su idioma — se habla español</p>
 </section>
 
@@ -713,16 +791,13 @@
     var u = 'puente.translate';
     var d = 'gmail.com';
     var full = u + '@' + d;
-    var link = '<a href="mai' + 'lto:' + full + '">' + full + '</a>';
+    var link = '<a href="mai' + 'lto:' + full + '" style="color: var(--gold-light, #f0d48a); text-decoration: none; border-bottom: 1px solid rgba(240,212,138,0.3);">' + full + '</a>';
 
     var navEl = document.getElementById('nav-email');
     if (navEl) { navEl.innerHTML = full; navEl.style.cursor = 'pointer'; navEl.onclick = function(){ window.location = 'mai' + 'lto:' + full; }; }
 
     var contactEl = document.getElementById('contact-email');
     if (contactEl) contactEl.innerHTML = link;
-
-    var ctaEl = document.getElementById('contact-cta');
-    if (ctaEl) ctaEl.href = 'mai' + 'lto:' + full;
   })();
 </script>
 
