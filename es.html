@@ -16,490 +16,104 @@
     --text-dark: #2c2c2c;
     --text-muted: #6b6b6b;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
+  body { font-family: 'Lora', Georgia, serif; color: var(--text-dark); background: var(--cream); overflow-x: hidden; }
 
-  body {
-    font-family: 'Lora', Georgia, serif;
-    color: var(--text-dark);
-    background: var(--cream);
-    overflow-x: hidden;
-  }
-
-  /* ── NAV ── */
   nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 100;
-    padding: 0.8rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(26, 58, 74, 0.97);
-    backdrop-filter: blur(8px);
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    padding: 0.8rem 2rem; display: flex; justify-content: space-between; align-items: center;
+    background: rgba(26, 58, 74, 0.97); backdrop-filter: blur(8px);
     border-bottom: 1px solid rgba(212, 168, 83, 0.12);
   }
-
-  .nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
-    text-decoration: none;
-  }
-
+  .nav-logo { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; }
   .nav-logo-img { width: 38px; height: 38px; border-radius: 50%; }
-
-  .nav-logo-text {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: var(--gold);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    line-height: 1.1;
-  }
-
-  .nav-logo-text span {
-    font-weight: 400;
-    color: var(--gold-light);
-    opacity: 0.6;
-    font-size: 0.75rem;
-    letter-spacing: 2px;
-    display: block;
-  }
-
-  .nav-contact {
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-    color: rgba(240, 212, 138, 0.6);
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-
+  .nav-logo-text { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.3rem; font-weight: 600; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; line-height: 1.1; }
+  .nav-logo-text span { font-weight: 400; color: var(--gold-light); opacity: 0.6; font-size: 0.75rem; letter-spacing: 2px; display: block; }
+  .nav-right { display: flex; align-items: center; gap: 1rem; }
+  .nav-contact { font-size: 0.8rem; letter-spacing: 1px; color: rgba(240, 212, 138, 0.6); text-decoration: none; transition: color 0.3s; cursor: pointer; }
   .nav-contact:hover { color: var(--gold-light); }
+  .lang-toggle { display: inline-block; padding: 0.35rem 0.9rem; font-family: 'Lora', serif; font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); background: transparent; border: 1px solid rgba(212, 168, 83, 0.35); border-radius: 2px; cursor: pointer; text-decoration: none; transition: all 0.3s; }
+  .lang-toggle:hover { background: rgba(212, 168, 83, 0.1); border-color: var(--gold); color: var(--gold-light); }
 
-  /* ── HERO ── */
   .hero {
-    min-height: 100vh;
-    background: linear-gradient(165deg, var(--teal-deep) 0%, var(--teal-mid) 100%);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 6rem 1.5rem 4rem;
-    position: relative;
-    overflow: hidden;
+    min-height: 100vh; background: linear-gradient(165deg, var(--teal-deep) 0%, var(--teal-mid) 100%);
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center; padding: 6rem 1.5rem 4rem; position: relative; overflow: hidden;
   }
-
   .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      repeating-linear-gradient(45deg, transparent, transparent 45px, rgba(212,168,83,0.025) 45px, rgba(212,168,83,0.025) 46px),
-      repeating-linear-gradient(-45deg, transparent, transparent 45px, rgba(212,168,83,0.025) 45px, rgba(212,168,83,0.025) 46px);
+    content: ''; position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 45px, rgba(212,168,83,0.025) 45px, rgba(212,168,83,0.025) 46px), repeating-linear-gradient(-45deg, transparent, transparent 45px, rgba(212,168,83,0.025) 45px, rgba(212,168,83,0.025) 46px);
     pointer-events: none;
   }
+  .hero-logo { width: 120px; height: 120px; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards; }
+  .hero h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(2.2rem, 5.5vw, 3.5rem); font-weight: 500; color: var(--cream); line-height: 1.15; max-width: 550px; opacity: 0; animation: fadeUp 0.8s ease 0.4s forwards; }
+  .hero h1 em { font-style: italic; color: var(--gold-light); }
+  .hero-sub { font-size: 1.05rem; color: rgba(240, 212, 138, 0.55); max-width: 440px; line-height: 1.7; margin-top: 1.2rem; opacity: 0; animation: fadeUp 0.8s ease 0.6s forwards; }
+  .hero-divider { width: 50px; height: 1px; background: var(--gold); margin: 1.8rem auto; opacity: 0; animation: fadeUp 0.8s ease 0.8s forwards; }
+  .hero-cta-group { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; opacity: 0; animation: fadeUp 0.8s ease 1s forwards; }
+  .hero-cta { padding: 0.9rem 2rem; font-family: 'Lora', serif; font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; border-radius: 2px; cursor: pointer; text-decoration: none; transition: all 0.3s; }
+  .hero-cta-primary { color: var(--teal-deep); background: linear-gradient(135deg, var(--gold), var(--gold-light)); border: none; }
+  .hero-cta-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(212, 168, 83, 0.3); }
+  .hero-cta-secondary { color: var(--gold); background: transparent; border: 1px solid rgba(212, 168, 83, 0.4); }
+  .hero-cta-secondary:hover { border-color: var(--gold); background: rgba(212, 168, 83, 0.08); }
 
-  .hero-logo {
-    width: 120px;
-    height: 120px;
-    margin-bottom: 1.5rem;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.2s forwards;
-  }
-
-  .hero h1 {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(2.2rem, 5.5vw, 3.5rem);
-    font-weight: 500;
-    color: var(--cream);
-    line-height: 1.15;
-    max-width: 550px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.4s forwards;
-  }
-
-  .hero h1 em {
-    font-style: italic;
-    color: var(--gold-light);
-  }
-
-  .hero-sub {
-    font-size: 1.05rem;
-    color: rgba(240, 212, 138, 0.55);
-    max-width: 440px;
-    line-height: 1.7;
-    margin-top: 1.2rem;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.6s forwards;
-  }
-
-  .hero-divider {
-    width: 50px;
-    height: 1px;
-    background: var(--gold);
-    margin: 1.8rem auto;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.8s forwards;
-  }
-
-  .hero-cta-group {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 1s forwards;
-  }
-
-  .hero-cta {
-    padding: 0.9rem 2rem;
-    font-family: 'Lora', serif;
-    font-size: 0.85rem;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    border-radius: 2px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.3s;
-  }
-
-  .hero-cta-primary {
-    color: var(--teal-deep);
-    background: linear-gradient(135deg, var(--gold), var(--gold-light));
-    border: none;
-  }
-
-  .hero-cta-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(212, 168, 83, 0.3);
-  }
-
-  .hero-cta-secondary {
-    color: var(--gold);
-    background: transparent;
-    border: 1px solid rgba(212, 168, 83, 0.4);
-  }
-
-  .hero-cta-secondary:hover {
-    border-color: var(--gold);
-    background: rgba(212, 168, 83, 0.08);
-  }
-
-  /* ── WHAT I HELP WITH ── */
-  .services {
-    padding: 5rem 1.5rem;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .section-label {
-    font-size: 0.75rem;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gold-dark);
-    text-align: center;
-    margin-bottom: 0.8rem;
-  }
-
-  .section-title {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
-    font-weight: 500;
-    text-align: center;
-    color: var(--teal-deep);
-    margin-bottom: 1rem;
-  }
-
-  .section-intro {
-    text-align: center;
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    line-height: 1.7;
-    max-width: 550px;
-    margin: 0 auto 2.5rem;
-  }
-
-  .help-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.2rem;
-  }
-
-  .help-item {
-    background: white;
-    border: 1px solid rgba(212, 168, 83, 0.1);
-    border-radius: 3px;
-    padding: 1.5rem;
-    transition: all 0.3s;
-  }
-
-  .help-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(26, 58, 74, 0.06);
-    border-color: rgba(212, 168, 83, 0.25);
-  }
-
+  .services { padding: 5rem 1.5rem; max-width: 800px; margin: 0 auto; }
+  .section-label { font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-dark); text-align: center; margin-bottom: 0.8rem; }
+  .section-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 500; text-align: center; color: var(--teal-deep); margin-bottom: 1rem; }
+  .section-intro { text-align: center; color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; max-width: 550px; margin: 0 auto 2.5rem; }
+  .help-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; }
+  .help-item { background: white; border: 1px solid rgba(212, 168, 83, 0.1); border-radius: 3px; padding: 1.5rem; transition: all 0.3s; }
+  .help-item:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(26, 58, 74, 0.06); border-color: rgba(212, 168, 83, 0.25); }
   .help-item-icon { font-size: 1.5rem; margin-bottom: 0.6rem; }
+  .help-item h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.15rem; font-weight: 600; color: var(--teal-deep); margin-bottom: 0.4rem; }
+  .help-item p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
 
-  .help-item h3 {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 1.15rem;
-    font-weight: 600;
-    color: var(--teal-deep);
-    margin-bottom: 0.4rem;
-  }
-
-  .help-item p {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
-
-  /* ── PRICING ── */
-  .pricing {
-    background: var(--teal-deep);
-    padding: 5rem 1.5rem;
-    position: relative;
-  }
-
-  .pricing::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: repeating-linear-gradient(45deg, transparent, transparent 50px, rgba(212,168,83,0.015) 50px, rgba(212,168,83,0.015) 51px);
-    pointer-events: none;
-  }
-
-  .pricing-inner {
-    max-width: 600px;
-    margin: 0 auto;
-    position: relative;
-    text-align: center;
-  }
-
+  .pricing { background: var(--teal-deep); padding: 5rem 1.5rem; position: relative; }
+  .pricing::before { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(45deg, transparent, transparent 50px, rgba(212,168,83,0.015) 50px, rgba(212,168,83,0.015) 51px); pointer-events: none; }
+  .pricing-inner { max-width: 600px; margin: 0 auto; position: relative; text-align: center; }
   .pricing .section-label { color: var(--gold); }
   .pricing .section-title { color: var(--cream); margin-bottom: 0.8rem; }
+  .pricing-intro { color: rgba(250, 246, 240, 0.5); font-size: 0.95rem; line-height: 1.7; margin-bottom: 2.5rem; }
+  .price-display { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; margin-bottom: 1.5rem; }
+  .price-starting-label { font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
+  .price-big { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 5rem; font-weight: 700; color: var(--cream); line-height: 1; }
+  .price-big span { font-size: 2.2rem; font-weight: 400; vertical-align: super; color: var(--gold-light); }
+  .price-tagline { font-size: 0.9rem; color: rgba(250, 246, 240, 0.4); font-style: italic; margin-top: 0.3rem; }
+  .pricing-note { font-size: 0.85rem; color: rgba(212, 168, 83, 0.45); font-style: italic; margin-top: 1rem; }
 
-  .pricing-intro {
-    color: rgba(250, 246, 240, 0.5);
-    font-size: 0.95rem;
-    line-height: 1.7;
-    margin-bottom: 2.5rem;
-  }
-
-  .price-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.2rem;
-  }
-
-  .price-card {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(212, 168, 83, 0.15);
-    border-radius: 3px;
-    padding: 2rem 1.5rem;
-    text-align: center;
-    transition: border-color 0.3s;
-  }
-
-  .price-card:hover { border-color: rgba(212, 168, 83, 0.35); }
-
-  .price-card h3 {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--gold-light);
-    margin-bottom: 0.3rem;
-  }
-
-  .price-amount {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--cream);
-    margin: 0.5rem 0;
-  }
-
-  .price-amount span {
-    font-size: 1rem;
-    font-weight: 400;
-    color: rgba(250, 246, 240, 0.4);
-  }
-
-  .price-desc {
-    font-size: 0.85rem;
-    color: rgba(250, 246, 240, 0.4);
-    line-height: 1.6;
-  }
-
-  .pricing-note {
-    font-size: 0.85rem;
-    color: rgba(212, 168, 83, 0.45);
-    font-style: italic;
-    margin-top: 2rem;
-  }
-
-  /* ── ABOUT ── */
-  .about {
-    padding: 5rem 1.5rem;
-    max-width: 650px;
-    margin: 0 auto;
-    text-align: center;
-  }
-
+  .about { padding: 5rem 1.5rem; max-width: 650px; margin: 0 auto; text-align: center; }
   .about .section-title { margin-bottom: 1.5rem; }
+  .about-text { font-size: 1rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 1rem; }
+  .about-text em { color: var(--teal-deep); font-style: normal; font-weight: 500; }
 
-  .about-text {
-    font-size: 1rem;
-    color: var(--text-muted);
-    line-height: 1.8;
-    margin-bottom: 1rem;
-  }
-
-  .about-text em {
-    color: var(--teal-deep);
-    font-style: normal;
-    font-weight: 500;
-  }
-
-  /* ── CONTACT ── */
-  .contact {
-    background: linear-gradient(165deg, var(--teal-deep), var(--teal-mid));
-    padding: 5rem 1.5rem;
-    text-align: center;
-  }
-
+  .contact { background: linear-gradient(165deg, var(--teal-deep), var(--teal-mid)); padding: 5rem 1.5rem; text-align: center; }
   .contact .section-label { color: var(--gold); }
   .contact .section-title { color: var(--cream); margin-bottom: 1rem; }
+  .contact-text { color: rgba(250, 246, 240, 0.5); font-size: 0.95rem; max-width: 420px; margin: 0 auto 2rem; line-height: 1.7; }
+  .bilingual-note { margin-top: 1.5rem; font-size: 0.85rem; color: rgba(212, 168, 83, 0.4); font-style: italic; }
 
-  .contact-text {
-    color: rgba(250, 246, 240, 0.5);
-    font-size: 0.95rem;
-    max-width: 420px;
-    margin: 0 auto 2rem;
-    line-height: 1.7;
-  }
-
-  .contact-methods {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-  }
-
-  .contact-method {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-  }
-
-  .contact-method-icon {
-    font-size: 1.3rem;
-  }
-
-  .contact-method-info {
-    text-align: left;
-  }
-
-  .contact-method-label {
-    font-size: 0.7rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--gold);
-  }
-
-  .contact-method-value {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 1.15rem;
-    color: var(--cream);
-  }
-
-  .contact-method-value a {
-    color: var(--cream);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(250, 246, 240, 0.15);
-    transition: border-color 0.3s;
-  }
-
-  .contact-method-value a:hover { border-color: var(--gold); }
-
-  .contact-cta {
-    display: inline-block;
-    padding: 0.9rem 2rem;
-    font-family: 'Lora', serif;
-    font-size: 0.85rem;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--teal-deep);
-    background: linear-gradient(135deg, var(--gold), var(--gold-light));
-    border: none;
-    border-radius: 2px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.3s;
-  }
-
-  .contact-cta:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(212, 168, 83, 0.3);
-  }
-
-  .bilingual-note {
-    margin-top: 1.5rem;
-    font-size: 0.85rem;
-    color: rgba(212, 168, 83, 0.4);
-    font-style: italic;
-  }
-
-  /* ── FORM ── */
   .intake-form { max-width: 520px; margin: 0 auto; text-align: left; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
   .form-group { display: flex; flex-direction: column; margin-bottom: 1rem; }
-  .form-group.full { grid-column: 1 / -1; }
   .form-label { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
-  .form-input, .form-select, .form-textarea { font-family: 'Lora', Georgia, serif; font-size: 0.9rem; padding: 0.7rem 0.9rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(212,168,83,0.2); border-radius: 2px; color: var(--cream); outline: none; transition: border-color 0.3s; }
-  .form-input::placeholder, .form-textarea::placeholder { color: rgba(250,246,240,0.25); }
-  .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--gold); }
-  .form-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23d4a853' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.9rem center; padding-right: 2.5rem; cursor: pointer; }
-  .form-select option { background: var(--teal-deep); color: var(--cream); }
+  .form-label-optional { opacity: 0.5; font-size: 0.85em; text-transform: none; letter-spacing: 0; font-weight: 400; }
+  .form-input, .form-textarea { font-family: 'Lora', Georgia, serif; font-size: 0.9rem; padding: 0.7rem 0.9rem; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(212, 168, 83, 0.2); border-radius: 2px; color: var(--cream); outline: none; transition: border-color 0.3s; }
+  .form-input::placeholder, .form-textarea::placeholder { color: rgba(250, 246, 240, 0.25); }
+  .form-input:focus, .form-textarea:focus { border-color: var(--gold); }
   .form-textarea { resize: vertical; min-height: 100px; }
-  .form-checkbox-row { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; }
-  .form-checkbox-row input[type="checkbox"] { accent-color: var(--gold); width: 16px; height: 16px; cursor: pointer; }
-  .form-checkbox-label { font-size: 0.85rem; color: rgba(250,246,240,0.6); }
   .form-submit { display: block; width: 100%; padding: 1rem; font-family: 'Lora', serif; font-size: 0.9rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--teal-deep); background: linear-gradient(135deg, var(--gold), var(--gold-light)); border: none; border-radius: 2px; cursor: pointer; transition: all 0.3s; margin-top: 0.5rem; }
-  .form-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(212,168,83,0.3); }
-  .form-note { text-align: center; font-size: 0.8rem; color: rgba(250,246,240,0.3); margin-top: 1rem; font-style: italic; }
-  .form-or { text-align: center; color: rgba(250,246,240,0.3); font-size: 0.85rem; margin: 1.5rem 0; }
+  .form-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(212, 168, 83, 0.3); }
+  .form-note { text-align: center; font-size: 0.8rem; color: rgba(250, 246, 240, 0.3); margin-top: 1rem; font-style: italic; }
+  .form-or { text-align: center; color: rgba(250, 246, 240, 0.3); font-size: 0.85rem; margin: 1.5rem 0; }
   .form-email-alt { text-align: center; margin-bottom: 0.5rem; }
-  @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+  .contact-method-value { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.15rem; color: var(--cream); }
 
-  /* ── FOOTER ── */
-  footer {
-    background: #142e3a;
-    padding: 1.5rem;
-    text-align: center;
-    border-top: 1px solid rgba(212, 168, 83, 0.08);
-  }
+  footer { background: #142e3a; padding: 1.5rem; text-align: center; border-top: 1px solid rgba(212, 168, 83, 0.08); }
+  .footer-text { font-size: 0.75rem; color: rgba(250, 246, 240, 0.25); letter-spacing: 1px; }
 
-  .footer-text {
-    font-size: 0.75rem;
-    color: rgba(250, 246, 240, 0.25);
-    letter-spacing: 1px;
-  }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(18px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ── MOBILE ── */
   @media (max-width: 600px) {
     nav { padding: 0.7rem 1.2rem; }
     .hero { padding: 6rem 1.2rem 3.5rem; }
@@ -507,36 +121,8 @@
     .pricing, .contact { padding: 3.5rem 1.2rem; }
     .hero-cta-group { flex-direction: column; align-items: center; }
     .hero-cta { width: 100%; max-width: 280px; text-align: center; }
-    .contact-method { flex-direction: column; text-align: center; }
-    .contact-method-info { text-align: center; }
-  }
-
-  .nav-right {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .lang-toggle {
-    display: inline-block;
-    padding: 0.35rem 0.9rem;
-    font-family: 'Lora', serif;
-    font-size: 0.75rem;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--gold);
-    background: transparent;
-    border: 1px solid rgba(212, 168, 83, 0.35);
-    border-radius: 2px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.3s;
-  }
-
-  .lang-toggle:hover {
-    background: rgba(212, 168, 83, 0.1);
-    border-color: var(--gold);
-    color: var(--gold-light);
+    .form-row { grid-template-columns: 1fr; }
+    .price-big { font-size: 3.8rem; }
   }
 </style>
 </head>
@@ -571,10 +157,7 @@
       <g transform="translate(256, 372)"><line x1="-70" y1="0" x2="-12" y2="0" stroke="url(#nG)" stroke-width="1" opacity="0.5"/><circle cx="0" cy="0" r="2.5" fill="url(#nG)" opacity="0.6"/><line x1="12" y1="0" x2="70" y2="0" stroke="url(#nG)" stroke-width="1" opacity="0.5"/></g>
       <text x="256" y="400" text-anchor="middle" font-family="'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif" font-size="20" letter-spacing="8" fill="url(#nTG)" opacity="0.85">TRANSLATIONS</text>
     </svg>
-    <div class="nav-logo-text">
-      Puente
-      <span>Translations</span>
-    </div>
+    <div class="nav-logo-text">Puente<span>Translations</span></div>
   </a>
   <div class="nav-right">
     <a href="index.html" class="lang-toggle">English</a>
@@ -626,21 +209,20 @@
     <text x="256" y="435" text-anchor="middle" font-family="'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif" font-size="12" letter-spacing="3" fill="url(#hGF)" opacity="0.5" font-style="italic">BRIDGING LANGUAGES</text>
   </svg>
 
-  <h1>Traducciones <em>Español ↔ Inglés</em> para su Vida Diaria</h1>
+  <h1>Traducciones <em>Español &#8596; Inglés</em> para su Vida Diaria</h1>
   <p class="hero-sub">Ayudando a la comunidad inmigrante de Tampa Bay a navegar la vida en inglés — documentos, cartas, formularios y más.</p>
   <div class="hero-divider"></div>
   <div class="hero-cta-group">
-    <a href="#contact" class="hero-cta hero-cta-primary">Envíeme Su Documento</a>
+    <a href="#contact" class="hero-cta hero-cta-primary">Solicitar una Llamada</a>
     <a href="#pricing" class="hero-cta hero-cta-secondary">Ver Precios</a>
   </div>
 </section>
 
-<!-- WHAT I HELP WITH -->
+<!-- LO QUE HAGO -->
 <section class="services" id="services">
   <div class="section-label">Lo Que Hago</div>
   <h2 class="section-title">Traducciones del Día a Día</h2>
   <p class="section-intro">¿Necesita traducir algo del español al inglés o del inglés al español? Le puedo ayudar con cosas como:</p>
-
   <div class="help-list">
     <div class="help-item">
       <div class="help-item-icon">📄</div>
@@ -665,31 +247,22 @@
   </div>
 </section>
 
-<!-- PRICING -->
+<!-- PRECIOS -->
 <section class="pricing" id="pricing">
   <div class="pricing-inner">
     <div class="section-label">Precios Accesibles</div>
     <h2 class="section-title">Precios Sencillos y Justos</h2>
     <p class="pricing-intro">Una buena traducción no tiene que ser cara. Mantengo mis precios bajos para que todos puedan recibir la ayuda que necesitan.</p>
-
-    <div class="price-cards">
-      <div class="price-card">
-        <h3>Por Página</h3>
-        <div class="price-amount">$20 <span>/ página</span></div>
-        <p class="price-desc">Documentos estándar, cartas y formularios. La mayoría de los documentos de una página se entregan el mismo día.</p>
-      </div>
-      <div class="price-card">
-        <h3>Proyectos Más Largos</h3>
-        <div class="price-amount">$0.08 <span>/ palabra</span></div>
-        <p class="price-desc">Documentos de varias páginas, materiales de marketing o trabajo continuo. Descuentos por volumen disponibles.</p>
-      </div>
+    <div class="price-display">
+      <div class="price-starting-label">Desde</div>
+      <div class="price-big"><span>$</span>10</div>
+      <div class="price-tagline">Cotización gratis en cada solicitud — sin compromiso.</div>
     </div>
-
-    <p class="pricing-note">¿No está seguro? Envíeme su documento y le doy una cotización gratis — sin compromiso.</p>
+    <p class="pricing-note">¿No sabe cuánto costará su documento? Escríbame y le digo enseguida.</p>
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- SOBRE MÍ -->
 <section class="about" id="about">
   <div class="section-label">Sobre Mí</div>
   <h2 class="section-title">¿Por Qué Puente?</h2>
@@ -699,9 +272,9 @@
 
 <!-- FORMULARIO DE CONTACTO -->
 <section class="contact" id="contact">
-  <div class="section-label">Cotización Gratis</div>
-  <h2 class="section-title">Solicite una Traducción</h2>
-  <p class="contact-text">Llene el formulario y le respondo con una cotización — normalmente en pocas horas.</p>
+  <div class="section-label">Contácteme</div>
+  <h2 class="section-title">Solicite una Llamada</h2>
+  <p class="contact-text">Déjeme su nombre, número de teléfono y correo electrónico y me comunicaré con usted directamente — normalmente en pocas horas.</p>
 
   <div class="intake-form">
     <form action="https://formspree.io/f/mvzvryoo" method="POST">
@@ -712,63 +285,26 @@
           <input class="form-input" type="text" id="name" name="name" placeholder="Juan Pérez" required>
         </div>
         <div class="form-group">
-          <label class="form-label" for="email">Su Correo Electrónico</label>
-          <input class="form-input" type="email" id="email" name="email" placeholder="usted@email.com" required>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label" for="direction">Dirección del Idioma</label>
-          <select class="form-select" id="direction" name="language_direction" required>
-            <option value="" disabled selected>Seleccione...</option>
-            <option value="Spanish to English">Español → Inglés</option>
-            <option value="English to Spanish">Inglés → Español</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="pages">Número de Páginas (aprox.)</label>
-          <select class="form-select" id="pages" name="page_count" required>
-            <option value="" disabled selected>Seleccione...</option>
-            <option value="1">1 página</option>
-            <option value="2-3">2–3 páginas</option>
-            <option value="4-10">4–10 páginas</option>
-            <option value="10+">10+ páginas</option>
-          </select>
+          <label class="form-label" for="phone">Teléfono</label>
+          <input class="form-input" type="tel" id="phone" name="phone" placeholder="(813) 555-0000" required>
         </div>
       </div>
 
       <div class="form-group">
-        <label class="form-label" for="doctype">Tipo de Documento</label>
-        <select class="form-select" id="doctype" name="document_type">
-          <option value="" disabled selected>Seleccione...</option>
-          <option value="Personal letter">Carta personal o correspondencia</option>
-          <option value="School document">Nota de escuela o formulario de inscripción</option>
-          <option value="Medical document">Formulario o resumen médico</option>
-          <option value="Government form">Formulario o trámite del gobierno</option>
-          <option value="Job application">Solicitud de empleo o currículum</option>
-          <option value="Legal document">Documento legal o de inmigración</option>
-          <option value="Business flyer/ad">Volante, anuncio o marketing</option>
-          <option value="Website/online">Página web o contenido en línea</option>
-          <option value="Other">Otro</option>
-        </select>
+        <label class="form-label" for="email">Correo Electrónico</label>
+        <input class="form-input" type="email" id="email" name="email" placeholder="usted@email.com" required>
       </div>
 
       <div class="form-group">
-        <label class="form-label" for="text">Pegue Su Texto (o describa lo que necesita)</label>
-        <textarea class="form-textarea" id="text" name="text_to_translate" rows="5" placeholder="Pegue aquí el texto que necesita traducir, o describa el documento y yo le doy seguimiento..."></textarea>
+        <label class="form-label" for="message">¿Qué necesita? <span class="form-label-optional">(opcional)</span></label>
+        <textarea class="form-textarea" id="message" name="message" rows="4" placeholder="Describa brevemente lo que necesita — ej. una carta de una página, formulario escolar, documento médico, etc."></textarea>
       </div>
 
-      <div class="form-checkbox-row">
-        <input type="checkbox" id="selfcert" name="self_certification" value="Yes">
-        <label class="form-checkbox-label" for="selfcert">Necesito una declaración de auto-certificación con mi traducción</label>
-      </div>
-
-      <input type="hidden" name="_subject" value="Nueva Solicitud de Traducción — Puente Translations">
+      <input type="hidden" name="_subject" value="Nueva Solicitud de Llamada — Puente Translations">
       <input type="hidden" name="_language" value="es">
 
       <button type="submit" class="form-submit">Enviar Mi Solicitud</button>
-      <p class="form-note">Le respondo con una cotización y tiempo de entrega. Sin compromiso.</p>
+      <p class="form-note">Le llamo o escribo de vuelta — sin compromiso, sin presión.</p>
     </form>
 
     <div class="form-or">— o escríbame directamente —</div>
@@ -786,16 +322,13 @@
 </footer>
 
 <script>
-  // Build email via JS to prevent Cloudflare email obfuscation
   (function() {
     var u = 'puente.translate';
     var d = 'gmail.com';
     var full = u + '@' + d;
     var link = '<a href="mai' + 'lto:' + full + '" style="color: var(--gold-light, #f0d48a); text-decoration: none; border-bottom: 1px solid rgba(240,212,138,0.3);">' + full + '</a>';
-
     var navEl = document.getElementById('nav-email');
     if (navEl) { navEl.innerHTML = full; navEl.style.cursor = 'pointer'; navEl.onclick = function(){ window.location = 'mai' + 'lto:' + full; }; }
-
     var contactEl = document.getElementById('contact-email');
     if (contactEl) contactEl.innerHTML = link;
   })();
