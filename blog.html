@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Bridge — Newsletter | Puente Translations</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal-deep: #1a3a4a;
+    --teal-mid: #1e4d5e;
+    --gold: #d4a853;
+    --gold-light: #f0d48a;
+    --gold-dark: #b8882e;
+    --cream: #faf6f0;
+    --text-dark: #2c2c2c;
+    --text-muted: #6b6b6b;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Lora', Georgia, serif; color: var(--text-dark); background: var(--cream); overflow-x: hidden; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    padding: 0.8rem 2rem; display: flex; justify-content: space-between; align-items: center;
+    background: rgba(26, 58, 74, 0.97); backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(212, 168, 83, 0.12);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; }
+  .nav-logo-text { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.3rem; font-weight: 600; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; line-height: 1.1; }
+  .nav-logo-text span { font-weight: 400; color: var(--gold-light); opacity: 0.6; font-size: 0.75rem; letter-spacing: 2px; display: block; }
+  .nav-right { display: flex; align-items: center; gap: 1rem; }
+  .nav-link { font-size: 0.8rem; letter-spacing: 1px; color: rgba(240, 212, 138, 0.6); text-decoration: none; transition: color 0.3s; }
+  .nav-link:hover { color: var(--gold-light); }
+  .lang-toggle { display: inline-block; padding: 0.35rem 0.9rem; font-family: 'Lora', serif; font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); background: transparent; border: 1px solid rgba(212, 168, 83, 0.35); border-radius: 2px; cursor: pointer; text-decoration: none; transition: all 0.3s; }
+  .lang-toggle:hover { background: rgba(212, 168, 83, 0.1); border-color: var(--gold); color: var(--gold-light); }
+
+  /* ── BLOG HERO ── */
+  .blog-hero {
+    background: linear-gradient(165deg, var(--teal-deep) 0%, var(--teal-mid) 100%);
+    padding: 7rem 1.5rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .blog-hero::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 45px, rgba(212,168,83,0.025) 45px, rgba(212,168,83,0.025) 46px), repeating-linear-gradient(-45deg, transparent, transparent 45px, rgba(212,168,83,0.025) 45px, rgba(212,168,83,0.025) 46px);
+    pointer-events: none;
+  }
+  .blog-hero-label { font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards; }
+  .blog-hero h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 500; color: var(--cream); line-height: 1.1; opacity: 0; animation: fadeUp 0.8s ease 0.4s forwards; }
+  .blog-hero h1 em { font-style: italic; color: var(--gold-light); }
+  .blog-hero-sub { font-size: 1rem; color: rgba(240, 212, 138, 0.5); max-width: 460px; margin: 1rem auto 0; line-height: 1.7; opacity: 0; animation: fadeUp 0.8s ease 0.6s forwards; }
+  .blog-hero-divider { width: 50px; height: 1px; background: var(--gold); margin: 1.8rem auto 0; opacity: 0; animation: fadeUp 0.8s ease 0.8s forwards; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── BLOG LAYOUT ── */
+  .blog-container { max-width: 720px; margin: 0 auto; padding: 4rem 1.5rem 5rem; }
+
+  /* ── EDITION HEADER ── */
+  .edition-meta { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(212, 168, 83, 0.2); }
+  .edition-number { font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 0.5rem; }
+  .edition-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 600; color: var(--teal-deep); line-height: 1.2; margin-bottom: 0.5rem; }
+  .edition-byline { font-size: 0.8rem; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; }
+  .edition-tagline { font-size: 0.95rem; color: var(--gold-dark); font-style: italic; margin-top: 0.6rem; }
+
+  /* ── ARTICLE BODY ── */
+  .article-body h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+    font-weight: 600;
+    color: var(--teal-deep);
+    margin: 2.5rem 0 0.8rem;
+    line-height: 1.3;
+  }
+  .article-body p {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--text-dark);
+    margin-bottom: 1.2rem;
+  }
+  .article-body .pull-quote {
+    border-left: 3px solid var(--gold);
+    padding: 0.8rem 1.5rem;
+    margin: 2rem 0;
+    background: rgba(212, 168, 83, 0.04);
+  }
+  .article-body .pull-quote p {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--teal-deep);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* ── DIVIDER ── */
+  .section-break { display: flex; align-items: center; gap: 1rem; margin: 2.5rem 0; }
+  .section-break::before, .section-break::after { content: ''; flex: 1; height: 1px; background: rgba(212, 168, 83, 0.2); }
+  .section-break-icon { color: var(--gold); font-size: 0.9rem; letter-spacing: 4px; }
+
+  /* ── CLOSING NOTE ── */
+  .closing-note {
+    background: var(--teal-deep);
+    border-radius: 3px;
+    padding: 2rem 2rem;
+    margin-top: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .closing-note::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(212,168,83,0.02) 40px, rgba(212,168,83,0.02) 41px);
+    pointer-events: none;
+  }
+  .closing-note-label { font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; position: relative; }
+  .closing-note p { font-size: 0.9rem; color: rgba(250, 246, 240, 0.7); line-height: 1.75; margin-bottom: 0.8rem; position: relative; }
+  .closing-note p:last-child { margin-bottom: 0; }
+  .closing-note a { color: var(--gold-light); text-decoration: none; border-bottom: 1px solid rgba(240,212,138,0.3); }
+  .closing-note a:hover { border-color: var(--gold); color: var(--gold); }
+  .closing-note .note-contact { margin-top: 1.2rem; font-size: 0.85rem; color: rgba(212, 168, 83, 0.6); position: relative; }
+  .closing-note .community-rates { font-style: italic; font-size: 0.82rem; color: rgba(212, 168, 83, 0.45); margin-top: 0.5rem; position: relative; }
+
+  /* ── BACK / NAV BUTTONS ── */
+  .post-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(212, 168, 83, 0.15); }
+  .post-nav a { font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-dark); text-decoration: none; transition: color 0.3s; }
+  .post-nav a:hover { color: var(--teal-deep); }
+
+  /* ── ARCHIVE SECTION ── */
+  .archive { background: white; border-top: 1px solid rgba(212, 168, 83, 0.12); padding: 4rem 1.5rem; }
+  .archive-inner { max-width: 720px; margin: 0 auto; }
+  .archive-label { font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 0.6rem; }
+  .archive-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.8rem; font-weight: 500; color: var(--teal-deep); margin-bottom: 2rem; }
+  .archive-item { padding: 1.5rem 0; border-bottom: 1px solid rgba(212, 168, 83, 0.1); display: flex; gap: 1.5rem; align-items: flex-start; }
+  .archive-item:last-child { border-bottom: none; }
+  .archive-edition { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); white-space: nowrap; padding-top: 0.2rem; min-width: 80px; }
+  .archive-item-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.15rem; font-weight: 600; color: var(--teal-deep); margin-bottom: 0.3rem; }
+  .archive-item-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+  .archive-item-link { font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; color: var(--gold-dark); text-decoration: none; margin-top: 0.4rem; display: inline-block; transition: color 0.3s; }
+  .archive-item-link:hover { color: var(--teal-deep); }
+  .archive-coming { font-size: 0.8rem; color: rgba(107,107,107,0.5); font-style: italic; }
+
+  /* ── FOOTER ── */
+  footer { background: var(--teal-deep); padding: 2rem 1.5rem; text-align: center; border-top: 1px solid rgba(212, 168, 83, 0.1); }
+  .footer-text { font-size: 0.8rem; color: rgba(250, 246, 240, 0.3); letter-spacing: 1px; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-text">Puente <span>Translations</span></div>
+  </a>
+  <div class="nav-right">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="blog-es.html" class="lang-toggle">ES</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="blog-hero">
+  <div class="blog-hero-label">Newsletter &amp; Blog</div>
+  <h1>The <em>Bridge</em></h1>
+  <p class="blog-hero-sub">Stories, history, and culture from the world of translation — by Puente Translations.</p>
+  <div class="blog-hero-divider"></div>
+</section>
+
+<!-- ARTICLE -->
+<div class="blog-container">
+
+  <div class="edition-meta">
+    <div class="edition-number">Edition No. 1 &nbsp;·&nbsp; April 2026</div>
+    <h2 class="edition-title">In the Beginning, There Was One Language — Then Babel Changed Everything</h2>
+    <div class="edition-byline">By Jimmy Cabrera &nbsp;·&nbsp; Puente Translations</div>
+    <div class="edition-tagline">Bridging Languages. Connecting Lives.</div>
+  </div>
+
+  <div class="article-body">
+
+    <p>If you've ever struggled to communicate across a language barrier — fumbling for words, watching understanding slip away — you've felt what the ancient world tried to explain in one of history's most enduring stories.</p>
+    <p>The Tower of Babel.</p>
+    <p>It appears in the Book of Genesis, just eleven chapters in, tucked between the story of Noah's flood and the call of Abraham. It's brief — only nine verses long. But in those nine verses, the Bible offers a sweeping explanation for one of humanity's most defining features: why we don't all speak the same language.</p>
+    <p>And for those of us in the business of bridging those languages — it's where our story begins.</p>
+
+    <h2>The Story Itself</h2>
+    <p>The text of Genesis 11 describes a moment early in human history when the whole earth shared a single language and a common set of words. The people of the earth, migrating eastward, settled on a plain in the land of Shinar — ancient Mesopotamia, in what is now modern Iraq.</p>
+    <p>There, they made a decision that would echo through all of history.</p>
+
+    <div class="pull-quote">
+      <p>"Come, let us build ourselves a city, with a tower that reaches to the heavens, so that we may make a name for ourselves."</p>
+    </div>
+
+    <p>The tower was to be a monument to human unity and ambition — a single structure reaching toward God himself. But the Lord looked down, and in one of the Bible's most striking passages, expressed something almost like concern:</p>
+
+    <div class="pull-quote">
+      <p>"If as one people speaking the same language they have begun to do this, then nothing they plan to do will be impossible for them."</p>
+    </div>
+
+    <p>And so God scattered them. He confused their language so they could no longer understand each other, and dispersed them across the face of the whole earth. The city was called Babel — from the Hebrew <em>balal</em>, meaning to confuse or to mix.</p>
+    <p>In nine verses, the world went from one voice to many.</p>
+
+    <div class="section-break"><span class="section-break-icon">✦ ✦ ✦</span></div>
+
+    <h2>What Babel Really Means</h2>
+    <p>Theologians and scholars have debated the story's meaning for millennia. Was it a punishment? A mercy? A warning against pride? A myth borrowed from older Mesopotamian traditions of great ziggurat temples that literally touched the sky?</p>
+    <p>All of those interpretations have merit. But there's something else worth sitting with — something that speaks directly to the work of translation.</p>
+    <p>Babel didn't destroy humanity. It complicated it.</p>
+    <p>The scattered peoples didn't disappear. They became the nations — each carrying their own language, their own way of naming the world, their own stories, their own poetry, their own prayers. The multiplication of languages wasn't just a curse. It was the birth of culture itself.</p>
+    <p>Every language that emerged from that scattering encoded a different way of seeing. Arabic gave the world words for stars that astronomers still use today. Hebrew preserved sacred texts that shaped three world religions. Greek gave philosophy its vocabulary. Latin built an empire of law. Spanish carried all of those inheritances across an ocean and into an entire hemisphere.</p>
+    <p>And every single one of those languages, in every century since Babel, has needed a bridge back to the others.</p>
+
+    <div class="section-break"><span class="section-break-icon">✦ ✦ ✦</span></div>
+
+    <h2>The First Translators Were Heroes</h2>
+    <p>The ancient world understood this. In Egypt, professional interpreters served the Pharaohs as early as 3000 BC — some of the first recorded professionals in human history. In Mesopotamia, the very land where Babel supposedly stood, scribes trained for years to become fluent in multiple cuneiform languages. They were among the most respected members of society.</p>
+    <p>Because everyone knew: the ability to cross a language barrier was power. It meant trade. It meant diplomacy. It meant survival.</p>
+    <p>When Alexander the Great conquered Persia, he kept teams of interpreters at his side. When the Roman Empire administered its vast territories, it relied on translators to govern provinces that spoke dozens of languages. When Columbus arrived in the Caribbean, his greatest practical problem — before food, before shelter, before navigation — was language.</p>
+    <p>Every turning point in human history has had a translator standing just off to the side, doing the invisible work that made the moment possible.</p>
+
+    <div class="section-break"><span class="section-break-icon">✦ ✦ ✦</span></div>
+
+    <h2>Babel and the Modern World</h2>
+    <p>Today, the world speaks an estimated 7,000 languages. Linguists believe one disappears roughly every two weeks — silently, with the passing of its last speakers. At the same time, global migration, commerce, and communication have made the need for translation more urgent than ever before.</p>
+    <p>In the United States alone, more than 68 million people speak a language other than English at home. In Tampa Bay, that number includes hundreds of thousands of Spanish speakers — families navigating immigration paperwork in a language not their own, patients trying to explain symptoms to a doctor across a language gap, small business owners reaching for customers they can't yet reach.</p>
+
+    <div class="pull-quote">
+      <p>Babel is not ancient history. It's Tuesday morning at a courthouse in downtown Tampa.</p>
+    </div>
+
+    <p>And that's exactly why Puente Translations exists.</p>
+
+    <div class="section-break"><span class="section-break-icon">✦ ✦ ✦</span></div>
+
+    <h2>Why We Named It Puente</h2>
+    <p>Puente means bridge in Spanish. We chose that name deliberately — because that's what translation is. Not just converting words from one column to another, but building a structure across a divide so that people can actually reach each other.</p>
+    <p>The Tower of Babel gave us the divide. Translators have been building bridges across it ever since.</p>
+    <p>We're proud to be one of those bridges — right here in Tampa Bay, for the families, businesses, nonprofits, and legal offices that need to cross it every day.</p>
+    <p><em>From one language to another. From confusion to clarity. From Babel to the bridge.</em></p>
+
+    <div class="closing-note">
+      <div class="closing-note-label">A Note from Jimmy at Puente Translations</div>
+      <p>Thank you for reading the very first edition of <em>The Bridge</em> — our newsletter on the history, culture, and craft of translation.</p>
+      <p>Each edition, we'll explore a new corner of this ancient and essential art — from the scholars of Al-Andalus to the Cold War interpreters, from famous mistranslations that changed history to the words no language can fully capture.</p>
+      <p>We hope you'll stay with us for the journey.</p>
+      <p class="note-contact">
+        📧 <a href="mailto:jimmy@puente-translations.com">jimmy@puente-translations.com</a> &nbsp;·&nbsp;
+        🌐 <a href="https://puente-translations.com">puente-translations.com</a>
+      </p>
+      <p class="community-rates">Special community rates available for nonprofits, legal aid offices, churches, and immigrant-serving organizations. Ask us.</p>
+    </div>
+
+    <div class="post-nav">
+      <a href="index.html">← Back to Home</a>
+      <span style="font-size:0.75rem; color: var(--text-muted); font-style: italic;">More editions coming soon</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- ARCHIVE -->
+<section class="archive">
+  <div class="archive-inner">
+    <div class="archive-label">All Editions</div>
+    <h2 class="archive-title">The Bridge — Archive</h2>
+
+    <div class="archive-item">
+      <div class="archive-edition">No. 1</div>
+      <div>
+        <div class="archive-item-title">In the Beginning, There Was One Language — Then Babel Changed Everything</div>
+        <div class="archive-item-desc">The Tower of Babel, the birth of culture, and why translators have always been essential to human history.</div>
+        <a href="#" class="archive-item-link" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">Read Edition →</a>
+      </div>
+    </div>
+
+    <div class="archive-item">
+      <div class="archive-edition">No. 2</div>
+      <div>
+        <div class="archive-item-title" style="color: var(--text-muted); font-style: italic;">Coming Soon</div>
+        <div class="archive-item-desc archive-coming">The next edition of The Bridge will be published soon. Subscribe to stay updated.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-text">&copy; 2026 Puente Translations &middot; Tampa Bay, FL</p>
+</footer>
+
+</body>
+</html>
