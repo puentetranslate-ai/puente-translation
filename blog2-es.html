@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>El Puente — Boletín | Puente Translations</title>
+<title>El Puente | Edición No. 2 — Cuando el Árabe Moldeó el Español | Puente Translations</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -20,7 +20,6 @@
   html { scroll-behavior: smooth; }
   body { font-family: 'Lora', Georgia, serif; color: var(--text-dark); background: var(--cream); overflow-x: hidden; }
 
-  /* ── NAV ── */
   nav {
     position: fixed; top: 0; width: 100%; z-index: 100;
     padding: 0.8rem 2rem; display: flex; justify-content: space-between; align-items: center;
@@ -36,13 +35,9 @@
   .lang-toggle { display: inline-block; padding: 0.35rem 0.9rem; font-family: 'Lora', serif; font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); background: transparent; border: 1px solid rgba(212, 168, 83, 0.35); border-radius: 2px; cursor: pointer; text-decoration: none; transition: all 0.3s; }
   .lang-toggle:hover { background: rgba(212, 168, 83, 0.1); border-color: var(--gold); color: var(--gold-light); }
 
-  /* ── BLOG HERO ── */
   .blog-hero {
     background: linear-gradient(165deg, var(--teal-deep) 0%, var(--teal-mid) 100%);
-    padding: 7rem 1.5rem 4rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
+    padding: 7rem 1.5rem 4rem; text-align: center; position: relative; overflow: hidden;
   }
   .blog-hero::before {
     content: ''; position: absolute; inset: 0;
@@ -57,65 +52,32 @@
 
   @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 
-  /* ── BLOG LAYOUT ── */
   .blog-container { max-width: 720px; margin: 0 auto; padding: 4rem 1.5rem 5rem; }
 
-  /* ── EDITION HEADER ── */
   .edition-meta { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(212, 168, 83, 0.2); }
   .edition-number { font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 0.5rem; }
   .edition-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 600; color: var(--teal-deep); line-height: 1.2; margin-bottom: 0.5rem; }
   .edition-byline { font-size: 0.8rem; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; }
   .edition-tagline { font-size: 0.95rem; color: var(--gold-dark); font-style: italic; margin-top: 0.6rem; }
 
-  /* ── ARTICLE BODY ── */
-  .article-body h2 {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(1.3rem, 2.5vw, 1.7rem);
-    font-weight: 600;
-    color: var(--teal-deep);
-    margin: 2.5rem 0 0.8rem;
-    line-height: 1.3;
-  }
-  .article-body p {
-    font-size: 1rem;
-    line-height: 1.85;
-    color: var(--text-dark);
-    margin-bottom: 1.2rem;
-  }
-  .article-body .pull-quote {
-    border-left: 3px solid var(--gold);
-    padding: 0.8rem 1.5rem;
-    margin: 2rem 0;
-    background: rgba(212, 168, 83, 0.04);
-  }
-  .article-body .pull-quote p {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 1.25rem;
-    font-style: italic;
-    color: var(--teal-deep);
-    margin: 0;
-    line-height: 1.6;
-  }
+  .article-body h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(1.3rem, 2.5vw, 1.7rem); font-weight: 600; color: var(--teal-deep); margin: 2.5rem 0 0.8rem; line-height: 1.3; }
+  .article-body p { font-size: 1rem; line-height: 1.85; color: var(--text-dark); margin-bottom: 1.2rem; }
+  .article-body em { font-style: italic; color: var(--teal-deep); }
+  .article-body .pull-quote { border-left: 3px solid var(--gold); padding: 0.8rem 1.5rem; margin: 2rem 0; background: rgba(212, 168, 83, 0.04); }
+  .article-body .pull-quote p { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.25rem; font-style: italic; color: var(--teal-deep); margin: 0; line-height: 1.6; }
 
-  /* ── DIVIDER ── */
+  .word-list { background: white; border: 1px solid rgba(212, 168, 83, 0.15); border-radius: 3px; padding: 1.5rem 2rem; margin: 1.5rem 0; }
+  .word-list h4 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; color: var(--teal-deep); margin-bottom: 0.8rem; letter-spacing: 1px; text-transform: uppercase; font-size: 0.8rem; }
+  .word-list ul { list-style: none; }
+  .word-list ul li { font-size: 0.95rem; color: var(--text-dark); line-height: 1.8; padding-left: 1rem; position: relative; }
+  .word-list ul li::before { content: '✦'; color: var(--gold); position: absolute; left: 0; font-size: 0.6rem; top: 0.35rem; }
+
   .section-break { display: flex; align-items: center; gap: 1rem; margin: 2.5rem 0; }
   .section-break::before, .section-break::after { content: ''; flex: 1; height: 1px; background: rgba(212, 168, 83, 0.2); }
   .section-break-icon { color: var(--gold); font-size: 0.9rem; letter-spacing: 4px; }
 
-  /* ── CLOSING NOTE ── */
-  .closing-note {
-    background: var(--teal-deep);
-    border-radius: 3px;
-    padding: 2rem 2rem;
-    margin-top: 3rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .closing-note::before {
-    content: ''; position: absolute; inset: 0;
-    background-image: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(212,168,83,0.02) 40px, rgba(212,168,83,0.02) 41px);
-    pointer-events: none;
-  }
+  .closing-note { background: var(--teal-deep); border-radius: 3px; padding: 2rem; margin-top: 3rem; position: relative; overflow: hidden; }
+  .closing-note::before { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(212,168,83,0.02) 40px, rgba(212,168,83,0.02) 41px); pointer-events: none; }
   .closing-note-label { font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; position: relative; }
   .closing-note p { font-size: 0.9rem; color: rgba(250, 246, 240, 0.7); line-height: 1.75; margin-bottom: 0.8rem; position: relative; }
   .closing-note p:last-child { margin-bottom: 0; }
@@ -124,12 +86,10 @@
   .closing-note .note-contact { margin-top: 1.2rem; font-size: 0.85rem; color: rgba(212, 168, 83, 0.6); position: relative; }
   .closing-note .community-rates { font-style: italic; font-size: 0.82rem; color: rgba(212, 168, 83, 0.45); margin-top: 0.5rem; position: relative; }
 
-  /* ── BACK / NAV BUTTONS ── */
   .post-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(212, 168, 83, 0.15); }
   .post-nav a { font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-dark); text-decoration: none; transition: color 0.3s; }
   .post-nav a:hover { color: var(--teal-deep); }
 
-  /* ── ARCHIVE SECTION ── */
   .archive { background: white; border-top: 1px solid rgba(212, 168, 83, 0.12); padding: 4rem 1.5rem; }
   .archive-inner { max-width: 720px; margin: 0 auto; }
   .archive-label { font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 0.6rem; }
@@ -143,125 +103,140 @@
   .archive-item-link:hover { color: var(--teal-deep); }
   .archive-coming { font-size: 0.8rem; color: rgba(107,107,107,0.5); font-style: italic; }
 
-  /* ── FOOTER ── */
   footer { background: var(--teal-deep); padding: 2rem 1.5rem; text-align: center; border-top: 1px solid rgba(212, 168, 83, 0.1); }
   .footer-text { font-size: 0.8rem; color: rgba(250, 246, 240, 0.3); letter-spacing: 1px; }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="es.html" class="nav-logo">
     <div class="nav-logo-text">Puente <span>Translations</span></div>
   </a>
   <div class="nav-right">
     <a href="es.html" class="nav-link">Inicio</a>
-    <a href="blog.html" class="lang-toggle">EN</a>
+    <a href="blog-es.html" class="nav-link">El Puente</a>
+    <a href="blog2.html" class="lang-toggle">EN</a>
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="blog-hero">
-  <div class="blog-hero-label">Boletín &amp; Blog</div>
-  <h1>El <em>Puente</em></h1>
-  <p class="blog-hero-sub">Historias, historia y cultura del mundo de la traducción — por Puente Translations.</p>
+  <div class="blog-hero-label">El Puente · Edición No. 2</div>
+  <h1>Cuando el Árabe <em>Moldeó</em> el Español</h1>
+  <p class="blog-hero-sub">El idioma escondido dentro de un idioma — y lo que eso significa para la traducción.</p>
   <div class="blog-hero-divider"></div>
 </section>
 
-<!-- ARTICLE -->
 <div class="blog-container">
-
   <div class="edition-meta">
-    <div class="edition-number">Edición No. 1 &nbsp;·&nbsp; Abril 2026</div>
-    <h2 class="edition-title">Al Principio Había Una Sola Lengua — Hasta Que Babel Lo Cambió Todo</h2>
+    <div class="edition-number">Edición No. 2 &nbsp;·&nbsp; Abril 2026</div>
+    <h2 class="edition-title">Cuando el Árabe Moldeó el Español: El Idioma Escondido Dentro de un Idioma</h2>
     <div class="edition-byline">Por Jimmy Cabrera &nbsp;·&nbsp; Puente Translations</div>
     <div class="edition-tagline">Uniendo Idiomas. Conectando Vidas.</div>
   </div>
 
   <div class="article-body">
 
-    <p>Si alguna vez has luchado por comunicarte a través de una barrera lingüística — buscando las palabras, viendo cómo el entendimiento se escapa — has sentido lo que el mundo antiguo intentó explicar en una de las historias más perdurables de la historia.</p>
-    <p>La Torre de Babel.</p>
-    <p>Aparece en el Libro del Génesis, apenas en el capítulo once, entre la historia del diluvio de Noé y el llamado de Abraham. Es breve — solo nueve versículos. Pero en esos nueve versículos, la Biblia ofrece una explicación profunda de una de las características más definitorias de la humanidad: por qué no todos hablamos el mismo idioma.</p>
-    <p>Y para quienes nos dedicamos a tender puentes entre esos idiomas — aquí es donde comienza nuestra historia.</p>
+    <p>Si alguna vez has dicho la palabra <em>ojalá</em> — esa hermosa expresión española de esperanza, a mitad de camino entre "espero" y "si Dios quiere" — has hablado árabe.</p>
+    <p>Solo que no lo sabías.</p>
+    <p><em>Ojalá</em> viene del árabe <em>inshallah</em> — <em>in sha' Allah</em> — que significa "si Dios lo quiere." Cruzó el Mediterráneo hace más de mil años, se instaló en el idioma español y nunca se fue. Hoy, millones de hispanohablantes la usan cada día sin saber que llevan consigo un pedazo del árabe.</p>
+    <p>Esta es la historia de cómo sucedió eso — y por qué importa para quienes trabajamos entre idiomas.</p>
 
-    <h2>La Historia en Sí</h2>
-    <p>El texto de Génesis 11 describe un momento en los primeros tiempos de la humanidad, cuando toda la tierra compartía un solo idioma y un conjunto común de palabras. Los pueblos de la tierra, migrando hacia el oriente, se establecieron en una llanura en la tierra de Shinar — la antigua Mesopotamia, en lo que hoy es Irak.</p>
-    <p>Allí tomaron una decisión que resonaría a lo largo de toda la historia.</p>
+    <div class="section-break"><span class="section-break-icon">✦ ✦ ✦</span></div>
 
-    <div class="pull-quote">
-      <p>"Vamos, edifiquémonos una ciudad y una torre cuya cúspide llegue al cielo; hagámonos un nombre."</p>
+    <h2>El Encuentro de Dos Mundos</h2>
+    <p>En el año 711 d.C., fuerzas árabes y bereberes cruzaron el Estrecho de Gibraltar y entraron en la Península Ibérica — la tierra que se convertiría en España y Portugal. La llamaron <em>Al-Ándalus</em>. Durante casi 800 años, la civilización islámica floreció allí, produciendo algunos de los mayores logros en matemáticas, astronomía, medicina, filosofía y literatura que el mundo haya visto.</p>
+    <p>Y durante casi 800 años, el árabe y las formas tempranas del español vivieron lado a lado.</p>
+    <p>Comerciaban. Negociaban. Debatían y discutían. Juntos construyeron ciudades — Toledo, Sevilla, Córdoba — que se convirtieron en los centros intelectuales del mundo medieval. Eruditos de toda Europa llegaban a traducir textos árabes al latín, desvelando siglos de conocimiento que los académicos islámicos habían preservado y expandido mientras Europa atravesaba sus épocas más oscuras.</p>
+    <p>El lenguaje, como siempre ocurre cuando las personas conviven, empezó a fusionarse.</p>
+
+    <div class="section-break"><span class="section-break-icon">✦ ✦ ✦</span></div>
+
+    <h2>Las Palabras Que Se Quedaron</h2>
+    <p>Cuando la Reconquista — la recuperación cristiana de España — finalmente se completó en 1492, los musulmanes arabófonos fueron expulsados. Pero el idioma que dejaron atrás no era tan fácil de eliminar.</p>
+    <p>Los lingüistas estiman que el español contiene entre 4,000 y 8,000 palabras de origen árabe. Algunas de las más comunes provienen directamente del árabe:</p>
+
+    <div class="word-list">
+      <h4>Vida Cotidiana</h4>
+      <ul>
+        <li><em>Almohada</em> — del árabe <em>al-mukhadda</em></li>
+        <li><em>Aceite</em> — del árabe <em>az-zayt</em></li>
+        <li><em>Azúcar</em> — del árabe <em>as-sukkar</em></li>
+        <li><em>Alcalde</em> — del árabe <em>al-qadi</em> (el juez)</li>
+        <li><em>Aldea</em> — del árabe <em>al-day'a</em></li>
+      </ul>
     </div>
 
-    <p>La torre sería un monumento a la unidad y la ambición humana — una única estructura que alcanzaría al propio Dios. Pero el Señor miró hacia abajo y, en uno de los pasajes más llamativos de la Biblia, expresó algo parecido a la preocupación:</p>
-
-    <div class="pull-quote">
-      <p>"Si como un solo pueblo que habla un mismo idioma han comenzado a hacer esto, nada de lo que se propongan les será imposible."</p>
+    <div class="word-list">
+      <h4>Agricultura y Naturaleza</h4>
+      <ul>
+        <li><em>Naranja</em> — del árabe <em>naranj</em></li>
+        <li><em>Algodón</em> — del árabe <em>al-qutn</em></li>
+        <li><em>Acequia</em> — del árabe <em>as-saqiya</em></li>
+      </ul>
     </div>
 
-    <p>Y así Dios los dispersó. Confundió su lenguaje para que no pudieran entenderse entre sí, y los esparció por toda la faz de la tierra. La ciudad fue llamada Babel — del hebreo <em>balal</em>, que significa confundir o mezclar.</p>
-    <p>En nueve versículos, el mundo pasó de una sola voz a muchas.</p>
-
-    <div class="section-break"><span class="section-break-icon">✦ ✦ ✦</span></div>
-
-    <h2>Lo Que Babel Realmente Significa</h2>
-    <p>Teólogos y académicos han debatido el significado de esta historia durante milenios. ¿Fue un castigo? ¿Una misericordia? ¿Una advertencia contra el orgullo? ¿Un mito tomado de tradiciones mesopotámicas más antiguas sobre enormes templos zigurat que literalmente tocaban el cielo?</p>
-    <p>Todas esas interpretaciones tienen mérito. Pero hay algo más que vale la pena considerar — algo que habla directamente al trabajo de la traducción.</p>
-    <p>Babel no destruyó a la humanidad. La complicó.</p>
-    <p>Los pueblos dispersos no desaparecieron. Se convirtieron en las naciones — cada uno cargando su propio idioma, su propia forma de nombrar el mundo, sus propias historias, su propia poesía, sus propias oraciones. La multiplicación de lenguas no fue solo una maldición. Fue el nacimiento de la cultura misma.</p>
-    <p>Cada idioma que surgió de esa dispersión codificó una manera distinta de ver el mundo. El árabe le dio al mundo palabras para las estrellas que los astrónomos aún usan hoy. El hebreo preservó textos sagrados que dieron forma a tres religiones mundiales. El griego le dio su vocabulario a la filosofía. El latín construyó un imperio de leyes. El español llevó todas esas herencias a través de un océano y hacia todo un hemisferio.</p>
-    <p>Y cada uno de esos idiomas, en todos los siglos desde Babel, ha necesitado un puente de regreso hacia los demás.</p>
-
-    <div class="section-break"><span class="section-break-icon">✦ ✦ ✦</span></div>
-
-    <h2>Los Primeros Traductores Fueron Héroes</h2>
-    <p>El mundo antiguo lo entendía. En Egipto, los intérpretes profesionales servían a los faraones desde el año 3000 a.C. — algunos de los primeros profesionales registrados en la historia de la humanidad. En Mesopotamia, la misma tierra donde supuestamente se levantó Babel, los escribas se formaban durante años para dominar múltiples idiomas cuneiformes. Eran de los miembros más respetados de la sociedad.</p>
-    <p>Porque todos sabían: la capacidad de cruzar una barrera lingüística era poder. Significaba comercio. Significaba diplomacia. Significaba supervivencia.</p>
-    <p>Cuando Alejandro Magno conquistó Persia, mantuvo equipos de intérpretes a su lado. Cuando el Imperio Romano administraba sus vastos territorios, dependía de los traductores para gobernar provincias que hablaban decenas de idiomas. Cuando Colón llegó al Caribe, su mayor problema práctico — antes que la comida, el refugio o la navegación — fue el idioma.</p>
-    <p>Cada momento decisivo de la historia humana tuvo un traductor justo a un lado, haciendo el trabajo invisible que hizo posible ese momento.</p>
-
-    <div class="section-break"><span class="section-break-icon">✦ ✦ ✦</span></div>
-
-    <h2>Babel y el Mundo Moderno</h2>
-    <p>Hoy, el mundo habla aproximadamente 7,000 idiomas. Los lingüistas creen que uno desaparece cada dos semanas — en silencio, con el fallecimiento de sus últimos hablantes. Al mismo tiempo, la migración global, el comercio y la comunicación han hecho que la necesidad de traducción sea más urgente que nunca.</p>
-    <p>Solo en Estados Unidos, más de 68 millones de personas hablan un idioma diferente al inglés en casa. En Tampa Bay, ese número incluye a cientos de miles de hispanohablantes — familias navegando trámites migratorios en un idioma que no es el suyo, pacientes intentando explicar síntomas a un médico a través de una barrera lingüística, pequeños empresarios buscando llegar a clientes que aún no pueden alcanzar.</p>
-
-    <div class="pull-quote">
-      <p>Babel no es historia antigua. Es el martes por la mañana en un juzgado del centro de Tampa.</p>
+    <div class="word-list">
+      <h4>Ciencia y Conocimiento</h4>
+      <ul>
+        <li><em>Álgebra</em> — directamente del árabe <em>al-jabr</em></li>
+        <li><em>Algoritmo</em> — del nombre del matemático árabe Al-Juarismi</li>
+        <li><em>Alquimia</em> — del árabe <em>al-kimiya</em></li>
+      </ul>
     </div>
 
-    <p>Y eso es exactamente por lo que existe Puente Translations.</p>
+    <p>¿Notas algo en casi todas estas palabras? Comienzan con <em>al-</em> o <em>a-</em>. Ese es el artículo determinado árabe — <em>al</em> significa "el" o "la." Cuando las palabras árabes entraron al español, muchas trajeron consigo el artículo, fusionado permanentemente al sustantivo. La palabra española para algodón no es solo <em>qutn</em> — es <em>al-qutn</em>, con "el" incorporado para siempre.</p>
 
     <div class="section-break"><span class="section-break-icon">✦ ✦ ✦</span></div>
 
-    <h2>Por Qué Lo Llamamos Puente</h2>
-    <p>Puente significa bridge en inglés. Elegimos ese nombre deliberadamente — porque eso es lo que es la traducción. No solo convertir palabras de una columna a otra, sino construir una estructura sobre una brecha para que las personas puedan realmente encontrarse.</p>
-    <p>La Torre de Babel nos dio la brecha. Los traductores han estado construyendo puentes sobre ella desde entonces.</p>
-    <p>Nos enorgullece ser uno de esos puentes — aquí mismo en Tampa Bay, para las familias, empresas, organizaciones sin fines de lucro y despachos legales que necesitan cruzarlo cada día.</p>
-    <p><em>De un idioma al otro. De la confusión a la claridad. De Babel al puente.</em></p>
+    <h2>El Idioma de la Civilización</h2>
+    <p>Lo que hizo tan profunda la influencia del árabe en el español no fue solo la proximidad — fue el prestigio.</p>
+    <p>Durante el apogeo de Al-Ándalus, el árabe era el idioma de la ciencia, la filosofía, la medicina y la poesía. Era el idioma de la civilización más avanzada del mundo occidental. Cuando los hispanohablantes tomaban prestadas palabras árabes, no solo llenaban vacíos de vocabulario — alcanzaban conceptos y tecnologías que aún no existían en su propio idioma.</p>
+    <p><em>Alcohol</em> viene del árabe <em>al-kuhul</em>. <em>Cifra</em> y <em>cero</em> vienen del árabe <em>sifr</em>. <em>Almirante</em> viene del árabe <em>amir al-bahr</em> — "comandante del mar."</p>
+    <p>No son notas al pie de la historia. Son el vocabulario de la vida moderna cotidiana, que lleva consigo la memoria de una civilización en la que casi nadie piensa.</p>
+
+    <div class="section-break"><span class="section-break-icon">✦ ✦ ✦</span></div>
+
+    <h2>Lo Que Esto Significa para la Traducción</h2>
+    <p>Cada idioma es un palimpsesto — un manuscrito que ha sido escrito una y otra vez, con huellas de textos más antiguos aún visibles bajo la superficie.</p>
+    <p>Cuando traducimos español al inglés, no solo convertimos palabras de una columna a otra. Estamos moviendo significado a través de capas de historia, cultura y civilización. Un documento en español no es solo español — lleva gramática visigótica, raíces latinas, vocabulario árabe y la poesía del Siglo de Oro, todo comprimido en las palabras que alguien eligió escribir en una página.</p>
+    <p>Esto es lo que hace que la traducción sea genuinamente difícil — y genuinamente importante.</p>
+
+    <div class="pull-quote">
+      <p>Cuando una familia hispanohablante llega con documentos que necesitan traducirse para USCIS, esos papeles no son solo burocracia. Están escritos en un idioma que lleva 800 años de influencia árabe y la memoria de una de las civilizaciones multiculturales más grandes de la historia.</p>
+    </div>
+
+    <p>El trabajo del traductor es cargar con todo eso — con cuidado, con precisión y con respeto por lo que el lenguaje realmente es.</p>
+
+    <div class="section-break"><span class="section-break-icon">✦ ✦ ✦</span></div>
+
+    <h2>Ojalá</h2>
+    <p>Terminamos donde empezamos.</p>
+    <p><em>Ojalá</em> — tomado prestado del árabe, moldeado por siglos de contacto entre dos grandes civilizaciones, ahora tejido tan profundamente en el español que la mayoría de los hablantes se sorprenderían al saber que originalmente no es español en absoluto.</p>
+    <p>Eso es lo que hace el lenguaje. Absorbe. Transforma. Lleva el pasado al presente sin pedir permiso.</p>
+    <p>Y en algún lugar de ese proceso — en el movimiento del significado de un mundo a otro — los traductores siempre han sido esenciales.</p>
+    <p><em>Ojalá eso nunca cambie.</em></p>
 
     <div class="closing-note">
       <div class="closing-note-label">Una Nota de Jimmy en Puente Translations</div>
-      <p>Gracias por leer la primera edición de <em>El Puente</em> — nuestro boletín sobre la historia, la cultura y el arte de la traducción.</p>
-      <p>En cada edición exploraremos un nuevo rincón de este arte antiguo y esencial — desde los eruditos de Al-Ándalus hasta los intérpretes de la Guerra Fría, desde las traducciones famosas que cambiaron la historia hasta las palabras que ningún idioma puede capturar del todo.</p>
-      <p>Esperamos que nos acompañes en este recorrido.</p>
+      <p>Gracias por leer la Edición No. 2 de <em>El Puente</em>. En cada edición exploramos un rincón de la historia y la cultura del lenguaje — porque traducir nunca se trata solo de palabras. Se trata de los mundos que esas palabras llevan consigo.</p>
+      <p>Puente Translations se especializa en traducciones certificadas y profesionales español ↔ inglés para personas, familias, empresas y organizaciones en Tampa Bay y más allá.</p>
       <p class="note-contact">
         📧 <a href="mailto:jimmy@puente-translations.com">jimmy@puente-translations.com</a> &nbsp;·&nbsp;
-        🌐 <a href="https://puente-translations.com">puente-translations.com</a>
+        🌐 <a href="https://puente-translations.com">puente-translations.com</a> &nbsp;·&nbsp;
+        📱 WhatsApp: (813) 401-0068
       </p>
       <p class="community-rates">Tarifas especiales para organizaciones sin fines de lucro, oficinas de asistencia legal, iglesias y organizaciones al servicio de comunidades inmigrantes. Contáctenos.</p>
     </div>
 
     <div class="post-nav">
-      <a href="es.html">← Volver al Inicio</a>
-      <span style="font-size:0.75rem; color: var(--text-muted); font-style: italic;">Más ediciones próximamente</span>
+      <a href="blog-es.html">← Edición No. 1</a>
+      <a href="es.html">Inicio →</a>
     </div>
 
   </div>
 </div>
 
-<!-- ARCHIVE -->
 <section class="archive">
   <div class="archive-inner">
     <div class="archive-label">Todas las Ediciones</div>
@@ -272,7 +247,7 @@
       <div>
         <div class="archive-item-title">Al Principio Había Una Sola Lengua — Hasta Que Babel Lo Cambió Todo</div>
         <div class="archive-item-desc">La Torre de Babel, el nacimiento de la cultura, y por qué los traductores siempre han sido esenciales para la historia humana.</div>
-        <a href="#" class="archive-item-link" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">Leer Edición →</a>
+        <a href="blog-es.html" class="archive-item-link">Leer Edición →</a>
       </div>
     </div>
 
@@ -281,7 +256,7 @@
       <div>
         <div class="archive-item-title">Cuando el Árabe Moldeó el Español: El Idioma Escondido Dentro de un Idioma</div>
         <div class="archive-item-desc">Cómo 800 años de civilización árabe dejaron miles de palabras dentro del español — y lo que eso significa para la traducción.</div>
-        <a href="blog2-es.html" class="archive-item-link">Leer Edición →</a>
+        <a href="#" class="archive-item-link" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">Leer Edición →</a>
       </div>
     </div>
 
@@ -296,7 +271,6 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <p class="footer-text">&copy; 2026 Puente Translations &middot; Tampa Bay, FL</p>
 </footer>
